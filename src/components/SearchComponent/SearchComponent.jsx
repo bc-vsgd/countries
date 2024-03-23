@@ -7,6 +7,8 @@ const SearchComponent = ({
   setName,
   setPop,
   setArea,
+  setCont,
+  setLang,
   continents,
   languages,
   currencies,
@@ -16,15 +18,18 @@ const SearchComponent = ({
   //
   const navigate = useNavigate();
 
+  // Name, population, area sort
   const handleSortSelect = (event) => {
     setPage(1);
     const arr = event.target.value.split("-");
-    // console.log("arr", arr);
     if (arr[0] === "name") {
       setSearchParams({ name: arr[1] });
       setName(arr[1]);
       setPop("");
       setArea("");
+      setCont("");
+      setLang("");
+
       navigate(`/countries/sort?name=${arr[1]}`);
     }
     if (arr[0] === "pop") {
@@ -32,26 +37,52 @@ const SearchComponent = ({
       setPop(arr[1]);
       setName("");
       setArea("");
+      setCont("");
+      setLang("");
+
       navigate(`/countries/sort?pop=${arr[1]}`);
     }
     if (arr[0] === "area") {
       setArea(arr[1]);
       setName("");
       setPop("");
+      setCont("");
+      setLang("");
+
       navigate(`/countries/sort?area=${arr[1]}`);
     }
   };
 
+  // Continent / language / currency => display 2nd <select>
   const handleSearchSelect = (event) => {
     const value = event.target.value;
     setSelectOption(value);
   };
 
+  // Continent search
   const handleContinentSearch = (event) => {
-    // console.log("search continent");
-    const value = event.target.value;
-    // console.log("value: ", value);
-    navigate("/countries/search");
+    const continent = event.target.value;
+    setPage(1);
+    setSearchParams({ cont: continent });
+    setCont(continent);
+    setPop("");
+    setName("");
+    setArea("");
+    setLang("");
+    navigate(`/countries/sort?cont=${continent}`);
+  };
+
+  // Language search
+  const handleLanguageSearch = (event) => {
+    setPage(1);
+    const language = event.target.value;
+    setSearchParams({ lang: language });
+    setLang(language);
+    setName("");
+    setPop("");
+    setArea("");
+    setCont("");
+    navigate(`/countries/sort?lang=${language}`);
   };
 
   return (
@@ -65,7 +96,7 @@ const SearchComponent = ({
         <option value="area-asc">Area +</option>
         <option value="area-desc">Area -</option>
       </select>
-      {/* Search */}
+      {/* Search select */}
       <div>
         <div>
           <input type="text" placeholder="Search by name" />
@@ -96,8 +127,14 @@ const SearchComponent = ({
         )}
         {/* Languages select */}
         {selectOption === "language" && (
-          <select name="" id="">
-            <option value="">{languages[0].lang}</option>
+          <select name="" id="" size={10} onChange={handleLanguageSearch}>
+            {languages.map((language, index) => {
+              return (
+                <option value={language.lang} key={index}>
+                  {language.lang}
+                </option>
+              );
+            })}
           </select>
         )}
       </div>
