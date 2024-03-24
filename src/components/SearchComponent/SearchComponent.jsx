@@ -7,6 +7,7 @@ const SearchComponent = ({
   setName,
   setPop,
   setArea,
+  setNameSearch,
   setCont,
   setLang,
   continents,
@@ -15,6 +16,8 @@ const SearchComponent = ({
 }) => {
   // States
   const [selectOption, setSelectOption] = useState("");
+  // Value of name search input
+  const [nameValue, setNameValue] = useState("");
   //
   const navigate = useNavigate();
 
@@ -27,9 +30,10 @@ const SearchComponent = ({
       setName(arr[1]);
       setPop("");
       setArea("");
+      setNameSearch("");
+      setNameValue("");
       setCont("");
       setLang("");
-
       navigate(`/countries/sort?name=${arr[1]}`);
     }
     if (arr[0] === "pop") {
@@ -37,22 +41,38 @@ const SearchComponent = ({
       setPop(arr[1]);
       setName("");
       setArea("");
+      setNameSearch("");
+      setNameValue("");
       setCont("");
       setLang("");
-
       navigate(`/countries/sort?pop=${arr[1]}`);
     }
     if (arr[0] === "area") {
+      setSearchParams({ area: arr[1] });
       setArea(arr[1]);
       setName("");
       setPop("");
+      setNameSearch("");
+      setNameValue("");
       setCont("");
       setLang("");
-
       navigate(`/countries/sort?area=${arr[1]}`);
     }
   };
 
+  // Search by name
+  const handleNameSearch = (event) => {
+    event.preventDefault();
+    setPage(1);
+    setNameSearch(nameValue);
+    setSearchParams({ namesearch: nameValue });
+    setName("");
+    setPop("");
+    setArea("");
+    setCont("");
+    setLang("");
+    navigate(`/countries/sort?namesearch=${nameValue}`);
+  };
   // Continent / language / currency => display 2nd <select>
   const handleSearchSelect = (event) => {
     const value = event.target.value;
@@ -68,6 +88,9 @@ const SearchComponent = ({
     setPop("");
     setName("");
     setArea("");
+    setNameSearch("");
+    setNameValue("");
+
     setLang("");
     navigate(`/countries/sort?cont=${continent}`);
   };
@@ -81,6 +104,8 @@ const SearchComponent = ({
     setName("");
     setPop("");
     setArea("");
+    setNameSearch("");
+    setNameValue("");
     setCont("");
     navigate(`/countries/sort?lang=${language}`);
   };
@@ -98,10 +123,19 @@ const SearchComponent = ({
       </select>
       {/* Search select */}
       <div>
-        <div>
-          <input type="text" placeholder="Search by name" />
+        {/* Search by name */}
+        <form onSubmit={handleNameSearch}>
+          <input
+            type="text"
+            placeholder="Search by name"
+            value={nameValue}
+            onChange={(event) => {
+              setNameValue(event.target.value);
+            }}
+          />
           <button>Search</button>
-        </div>
+        </form>
+        {/* Select: continent / language / currency */}
         <select name="search" id="search-select" onChange={handleSearchSelect}>
           <option value="">Search by</option>
           <option value="continent">Continent</option>
