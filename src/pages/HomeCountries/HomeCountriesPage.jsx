@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 // Utils
 import getContinentsArray from "../../utils/getContinentsArray";
 import getLanguagesArray from "../../utils/getLanguagesArray";
+import getCurrenciesArray from "../../utils/getCurrenciesArray";
 
 const HomeCountriesPage = ({
   url,
@@ -23,7 +24,8 @@ const HomeCountriesPage = ({
         setContinents(continents);
         const languages = getLanguagesArray(data.languages);
         setLanguages(languages);
-        setCurrencies(data.currencies);
+        const currencies = getCurrenciesArray(data.currencies);
+        setCurrencies(currencies);
       } catch (error) {
         console.log("home countries page, error >>> ", error);
       }

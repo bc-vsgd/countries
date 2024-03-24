@@ -10,6 +10,7 @@ const SearchComponent = ({
   setNameSearch,
   setCont,
   setLang,
+  setCurr,
   continents,
   languages,
   currencies,
@@ -34,6 +35,8 @@ const SearchComponent = ({
       setNameValue("");
       setCont("");
       setLang("");
+      setCurr("");
+
       navigate(`/countries/sort?name=${arr[1]}`);
     }
     if (arr[0] === "pop") {
@@ -45,6 +48,8 @@ const SearchComponent = ({
       setNameValue("");
       setCont("");
       setLang("");
+      setCurr("");
+
       navigate(`/countries/sort?pop=${arr[1]}`);
     }
     if (arr[0] === "area") {
@@ -56,6 +61,8 @@ const SearchComponent = ({
       setNameValue("");
       setCont("");
       setLang("");
+      setCurr("");
+
       navigate(`/countries/sort?area=${arr[1]}`);
     }
   };
@@ -71,6 +78,8 @@ const SearchComponent = ({
     setArea("");
     setCont("");
     setLang("");
+    setCurr("");
+
     navigate(`/countries/sort?namesearch=${nameValue}`);
   };
   // Continent / language / currency => display 2nd <select>
@@ -92,6 +101,8 @@ const SearchComponent = ({
     setNameValue("");
 
     setLang("");
+    setCurr("");
+
     navigate(`/countries/sort?cont=${continent}`);
   };
 
@@ -107,7 +118,24 @@ const SearchComponent = ({
     setNameSearch("");
     setNameValue("");
     setCont("");
+    setCurr("");
     navigate(`/countries/sort?lang=${language}`);
+  };
+
+  // Currency search
+  const handleCurrencySearch = (event) => {
+    setPage(1);
+    const currency = event.target.value.toLowerCase();
+    setSearchParams({ curr: currency });
+    setCurr(currency);
+    setName("");
+    setPop("");
+    setArea("");
+    setNameSearch("");
+    setNameValue("");
+    setCont("");
+    setLang("");
+    navigate(`/countries/sort?curr=${currency}`);
   };
 
   return (
@@ -166,6 +194,18 @@ const SearchComponent = ({
               return (
                 <option value={language.lang} key={index}>
                   {language.lang}
+                </option>
+              );
+            })}
+          </select>
+        )}
+        {/* Currencies select */}
+        {selectOption === "currency" && (
+          <select name="" id="" size={10} onChange={handleCurrencySearch}>
+            {currencies.map((currency, index) => {
+              return (
+                <option value={currency.name} key={index}>
+                  {currency.name}
                 </option>
               );
             })}

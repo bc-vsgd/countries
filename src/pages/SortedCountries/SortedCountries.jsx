@@ -23,12 +23,13 @@ const SortedCountries = ({ url, continents, languages, currencies }) => {
   );
   const [cont, setCont] = useState(searchParams.get("continent") || "");
   const [lang, setLang] = useState(searchParams.get("lang") || "");
+  const [curr, setCurr] = useState(searchParams.get("curr") || "");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          `${url}/countries/sort?name=${name}&pop=${pop}&area=${area}&namesearch=${nameSearch}&cont=${cont}&lang=${lang}`
+          `${url}/countries/sort?name=${name}&pop=${pop}&area=${area}&namesearch=${nameSearch}&cont=${cont}&lang=${lang}&curr=${curr}`
         );
         // console.log("sorted, data >> ", data);
         setData(data.data);
@@ -40,7 +41,7 @@ const SortedCountries = ({ url, continents, languages, currencies }) => {
       setIsLoading(false);
     };
     fetchData();
-  }, [name, pop, area, nameSearch, cont, lang]);
+  }, [name, pop, area, nameSearch, cont, lang, curr]);
 
   return isLoading ? (
     <Loading />
@@ -55,6 +56,7 @@ const SortedCountries = ({ url, continents, languages, currencies }) => {
         setNameSearch={setNameSearch}
         setCont={setCont}
         setLang={setLang}
+        setCurr={setCurr}
         continents={continents}
         languages={languages}
         currencies={currencies}

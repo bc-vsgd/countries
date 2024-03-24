@@ -1,5 +1,19 @@
+import { useNavigate } from "react-router-dom";
+
 const Header = () => {
-  return <header>Header</header>;
+  const navigate = useNavigate();
+  return (
+    <header>
+      <div>HEADER</div>
+      <button
+        onClick={() => {
+          navigate("/countries");
+        }}
+      >
+        Home
+      </button>
+    </header>
+  );
 };
 
 export default Header;
