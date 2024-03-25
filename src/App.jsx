@@ -6,6 +6,7 @@ import HomeCountriesPage from "./pages/HomeCountries/HomeCountriesPage";
 import SortedCountries from "./pages/SortedCountries/SortedCountries";
 // Components
 import Header from "./components/Header/Header";
+import CountryComponent from "./components/CountryComponent/CountryComponent";
 // Style
 import "./App.css";
 
@@ -44,6 +45,10 @@ function App() {
               currencies={currencies}
             />
           }
+        />
+        <Route
+          path="/country/:name"
+          element={<CountryComponent url={countriesUrl} />}
         />
       </Routes>
     </Router>

@@ -1,0 +1,6 @@
+.country-flag,
+.coat-of-arms {
+  width: 200px;
+  height: 100px;
+  object-fit: contain;
+}

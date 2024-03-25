@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import axios from "axios";
 // Components
 import Loading from "../../components/Loader/Loader";
 import SearchComponent from "../../components/SearchComponent/SearchComponent";
 import PaginationComponent from "../../components/PaginationComponent/PaginationComponent";
+import ThumbnailComponent from "../../components/Thumbnail/ThumbnailComponent";
 
 const SortedCountries = ({ url, continents, languages, currencies }) => {
   // States
@@ -65,7 +66,22 @@ const SortedCountries = ({ url, continents, languages, currencies }) => {
 
       <div>
         {data.slice((page - 1) * 20, page * 20).map((country, index) => {
-          return <div key={index}>{country.name.common}</div>;
+          return (
+            <Link to={`/country/${country.name.common}`} key={index}>
+              <ThumbnailComponent
+                // key={index}
+                index={index}
+                country={country}
+                name={name}
+                pop={pop}
+                area={area}
+                nameSearch={nameSearch}
+                cont={cont}
+                lang={lang}
+                curr={curr}
+              />
+            </Link>
+          );
         })}
       </div>
     </>
