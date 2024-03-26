@@ -67,9 +67,7 @@ const CountryComponent = ({ url }) => {
       {/* Capital, population, area, language(s) */}
       <div>
         {data.capital && <p>Capital: {data.capital}</p>}
-        <p>
-          Population: {data.population} (demonym: {data.demonyms.eng.m})
-        </p>
+        <p>Population: {data.population} inhab.</p>
         <p>Area: {data.area} km2</p>
         {/* If languages */}
         {data.languages && (
@@ -107,9 +105,9 @@ const CountryComponent = ({ url }) => {
       {data.currencies && (
         <div>
           {Object.keys(data.currencies).length === 1 ? (
-            <p>Currency</p>
+            <p>Currency:</p>
           ) : (
-            <p>Currencies</p>
+            <p>Currencies:</p>
           )}
           {Object.values(data.currencies).map((currency, index) => {
             return <p key={index}>{currency.name}</p>;

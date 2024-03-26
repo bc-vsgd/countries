@@ -23,6 +23,7 @@ function App() {
       <Routes>
         {/* Home --> Home countries page */}
         <Route path="/" element={<HomePage />} />
+        {/*  */}
         {/* Countries: get continents [] & --> countries/sort page */}
         <Route
           path="/countries"
