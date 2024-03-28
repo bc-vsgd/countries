@@ -1,23 +1,19 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 // Components
-import Loading from "../Loader/Loader";
+import Loading from "../../components/Loader/Loader";
 
-const CountryComponent = ({ url }) => {
+const CountryPage = ({ url }) => {
   const { name } = useParams();
-  //   console.log("params name: ", name);
+  const location = useLocation();
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  //   console.log(Object.keys(data.name.nativeName));
-  //   console.log(Object.values(data.name.nativeName));
-  //   console.log(Object.entries(data.name.nativeName));
-  //   console.log(Object.values(data.currencies));
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        //   console.log("fetch");
         const { data } = await axios.get(`${url}/country/${name}`);
         // console.log("country comp, data: ", data.data[0]);
         setData(data.data[0]);
@@ -33,6 +29,20 @@ const CountryComponent = ({ url }) => {
     <Loading />
   ) : (
     <div>
+      {/* Back to previous page */}
+      <div>
+        <button
+          onClick={() => {
+            if (location.state) {
+              navigate(location.state.from);
+            } else {
+              navigate("/");
+            }
+          }}
+        >
+          Back
+        </button>
+      </div>
       {/* Name */}
       <div>
         <h1>
@@ -130,4 +140,4 @@ const CountryComponent = ({ url }) => {
   );
 };
 
-export default CountryComponent;
+export default CountryPage;

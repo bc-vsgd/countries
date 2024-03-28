@@ -1,3 +1,5 @@
+// UNFORTUNATELY UNUSED
+
 const getCurrenciesArray = (curr) => {
   //   arg: 'curr': array containing objects: {currencies: {CKD: {name: "Cook Islands dollar", symbol: "..."}} {NZD: {name: "...", symbol: "..."}}}
 

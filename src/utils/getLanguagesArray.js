@@ -1,3 +1,5 @@
+// UNFORTUNATELY UNUSED
+
 const getLanguagesArray = (lang) => {
   const languages = [];
   // 'lang': array of objects, each: {languages: {ell: 'Greek', tur: 'Turkish'}}

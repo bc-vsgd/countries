@@ -7,33 +7,38 @@ import SearchComponent from "../../components/SearchComponent/SearchComponent";
 import PaginationComponent from "../../components/PaginationComponent/PaginationComponent";
 import ThumbnailComponent from "../../components/Thumbnail/ThumbnailComponent";
 
-const SortedCountries = ({ url, continents, languages, currencies }) => {
+const SortedCountries = ({ url }) => {
   // States
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  // Current page, total number of pages
-  const [page, setPage] = useState(1);
+  // Page title
+  const [pageTitle, setPageTitle] = useState(["name", "asc"]);
+  // Total number of pages
   const [maxPage, setMaxPage] = useState(1);
   // Query params
   const [searchParams, setSearchParams] = useSearchParams();
   const [name, setName] = useState(searchParams.get("name") || "");
   const [pop, setPop] = useState(searchParams.get("pop") || "");
   const [area, setArea] = useState(searchParams.get("area") || "");
-  const [nameSearch, setNameSearch] = useState(
-    searchParams.get("namesearch") || ""
-  );
-  const [cont, setCont] = useState(searchParams.get("continent") || "");
-  const [lang, setLang] = useState(searchParams.get("lang") || "");
-  const [curr, setCurr] = useState(searchParams.get("curr") || "");
+  const [page, setPage] = useState(Number(searchParams.get("page")) || 1);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          `${url}/countries/sort?name=${name}&pop=${pop}&area=${area}&namesearch=${nameSearch}&cont=${cont}&lang=${lang}&curr=${curr}`
+          `${url}/countries/sort?name=${name}&pop=${pop}&area=${area}&page=${page}`
         );
         // console.log("sorted, data >> ", data);
         setData(data.data);
+        if (name) {
+          setPageTitle(["name", name]);
+        }
+        if (pop) {
+          setPageTitle(["pop", pop]);
+        }
+        if (area) {
+          setPageTitle(["area", area]);
+        }
         // Number of pages
         setMaxPage(Math.ceil(data.data.length / 20));
       } catch (error) {
@@ -42,43 +47,53 @@ const SortedCountries = ({ url, continents, languages, currencies }) => {
       setIsLoading(false);
     };
     fetchData();
-  }, [name, pop, area, nameSearch, cont, lang, curr]);
+  }, [name, pop, area, page]);
 
   return isLoading ? (
     <Loading />
   ) : (
     <>
       <SearchComponent
+        setPageTitle={setPageTitle}
         setPage={setPage}
         setSearchParams={setSearchParams}
         setName={setName}
         setPop={setPop}
         setArea={setArea}
-        setNameSearch={setNameSearch}
-        setCont={setCont}
-        setLang={setLang}
-        setCurr={setCurr}
-        continents={continents}
-        languages={languages}
-        currencies={currencies}
       />
-      <PaginationComponent page={page} setPage={setPage} maxPage={maxPage} />
+      {(name || pop || area) && (
+        <h1>
+          Sort by {pageTitle[0]} {pageTitle[1]}
+        </h1>
+      )}
+
+      <PaginationComponent
+        page={page}
+        setPage={setPage}
+        maxPage={maxPage}
+        name={name}
+        pop={pop}
+        area={area}
+        setSearchParams={setSearchParams}
+      />
 
       <div>
         {data.slice((page - 1) * 20, page * 20).map((country, index) => {
           return (
-            <Link to={`/country/${country.name.common}`} key={index}>
+            <Link
+              to={`/country/${country.name.common}`}
+              key={index}
+              state={{
+                from: `/countries/sort?name=${name}&pop=${pop}&area=${area}&page=${page}`,
+              }}
+            >
               <ThumbnailComponent
-                // key={index}
                 index={index}
                 country={country}
+                page={page}
                 name={name}
                 pop={pop}
                 area={area}
-                nameSearch={nameSearch}
-                cont={cont}
-                lang={lang}
-                curr={curr}
               />
             </Link>
           );

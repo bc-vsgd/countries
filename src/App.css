@@ -1,6 +1,6 @@
 @import "./reset.css";
 @import "./components/Thumbnail/ThumbnailComponent.css";
-@import "./components/CountryComponent/CountryComponent.css";
+@import "./pages/CountryPage/CountryPage.css";
 a {
   text-decoration: none;
   color: black;

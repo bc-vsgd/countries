@@ -7,7 +7,7 @@ const Header = () => {
       <div>HEADER</div>
       <button
         onClick={() => {
-          navigate("/countries");
+          navigate("/");
         }}
       >
         Home

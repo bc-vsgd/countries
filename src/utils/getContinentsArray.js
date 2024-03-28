@@ -1,3 +1,5 @@
+// UNFORTUNATELY UNUSED
+
 const getContinentsArray = (cont) => {
   // cont: array of objects containing each: key region, key subregion
   // console.log(cont);
