@@ -7,7 +7,8 @@ import SearchComponent from "../../components/SearchComponent/SearchComponent";
 import PaginationComponent from "../../components/PaginationComponent/PaginationComponent";
 import ThumbnailComponent from "../../components/Thumbnail/ThumbnailComponent";
 
-const SortedCountries = ({ url }) => {
+const SortedCountries = ({ url, isoCodes }) => {
+  // console.log("sorted page, iso codes: ", isoCodes);
   // States
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -25,22 +26,33 @@ const SortedCountries = ({ url }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(
-          `${url}/countries/sort?name=${name}&pop=${pop}&area=${area}&page=${page}`
-        );
-        // console.log("sorted, data >> ", data);
-        setData(data.data);
         if (name) {
+          const { data } = await axios.get(
+            `${url}/countries/sort?name=${name}&page=${page}`
+          );
+          // console.log("sorted, data >> ", data);
+          setData(data.data);
           setPageTitle(["name", name]);
+          setMaxPage(Math.ceil(data.data.length / 20));
         }
         if (pop) {
+          const { data } = await axios.get(
+            `${url}/countries/sort?pop=${pop}&page=${page}`
+          );
+          // console.log("sorted, data >> ", data);
+          setData(data.data);
           setPageTitle(["pop", pop]);
+          setMaxPage(Math.ceil(data.data.length / 20));
         }
         if (area) {
+          const { data } = await axios.get(
+            `${url}/countries/sort?area=${area}&page=${page}`
+          );
+          // console.log("sorted, data >> ", data);
+          setData(data.data);
           setPageTitle(["area", area]);
+          setMaxPage(Math.ceil(data.data.length / 20));
         }
-        // Number of pages
-        setMaxPage(Math.ceil(data.data.length / 20));
       } catch (error) {
         console.log("sorted page, error >>> ", error);
       }
@@ -82,6 +94,7 @@ const SortedCountries = ({ url }) => {
           return (
             <Link
               to={`/country/${country.name.common}`}
+              // to={`/country/${country.cca3}`}
               key={index}
               state={{
                 from: `/countries/sort?name=${name}&pop=${pop}&area=${area}&page=${page}`,

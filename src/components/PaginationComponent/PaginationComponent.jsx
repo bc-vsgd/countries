@@ -13,12 +13,25 @@ const PaginationComponent = ({
         onClick={() => {
           if (page > 1) {
             setPage(page - 1);
-            setSearchParams({
-              page: page - 1,
-              name: name,
-              pop: pop,
-              area: area,
-            });
+
+            if (name) {
+              setSearchParams({
+                name: name,
+                page: page - 1,
+              });
+            }
+            if (pop) {
+              setSearchParams({
+                pop: pop,
+                page: page - 1,
+              });
+            }
+            if (area) {
+              setSearchParams({
+                area: area,
+                page: page - 1,
+              });
+            }
           }
         }}
       >
@@ -29,12 +42,25 @@ const PaginationComponent = ({
         onClick={() => {
           if (page < maxPage) {
             setPage(page + 1);
-            setSearchParams({
-              page: page + 1,
-              name: name,
-              pop: pop,
-              area: area,
-            });
+
+            if (name) {
+              setSearchParams({
+                name: name,
+                page: page + 1,
+              });
+            }
+            if (pop) {
+              setSearchParams({
+                pop: pop,
+                page: page + 1,
+              });
+            }
+            if (area) {
+              setSearchParams({
+                area: area,
+                page: page + 1,
+              });
+            }
           }
         }}
       >
