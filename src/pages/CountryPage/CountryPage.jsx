@@ -20,28 +20,33 @@ const languagesArray = (lang, name) => {
 
 // Population, area: add spaces between groups of 3 numbers
 const strWithSpaces = (initialStr) => {
-  // Reverse string
-  let reversedStr = "";
-  const length = initialStr.length;
-  for (let i = length - 1; i >= 0; i--) {
-    reversedStr += initialStr[i];
-  }
-  // Add spaces
-  let spaceStr = "";
-  for (let i = 0; i < reversedStr.length; i++) {
-    if (i % 3 === 0) {
-      spaceStr += " ";
+  if (Number(initialStr) >= 3) {
+    // Reverse string
+    let reversedStr = "";
+    const length = initialStr.length;
+    for (let i = length - 1; i >= 0; i--) {
+      reversedStr += initialStr[i];
     }
-    spaceStr += reversedStr[i];
+    // Add spaces
+    let spaceStr = "";
+    for (let i = 0; i < reversedStr.length; i++) {
+      if (i % 3 === 0) {
+        spaceStr += " ";
+      }
+      spaceStr += reversedStr[i];
+    }
+    // Reverse again string
+    let str = "";
+    for (let i = spaceStr.length - 1; i >= 0; i--) {
+      str += spaceStr[i];
+    }
+    str = str.trimEnd();
+    return str;
+  } else {
+    // Area < 3 km2
+    let str = initialStr;
+    return str;
   }
-  // Reverse again string
-  let str = "";
-  for (let i = spaceStr.length - 1; i >= 0; i--) {
-    str += spaceStr[i];
-  }
-  str = str.trimEnd();
-  // console.log("str: ", str);
-  return str;
 };
 
 // Returns an array of arrays: iso-3 codes & countries: [["FRA", "France"]["...", "..."]]

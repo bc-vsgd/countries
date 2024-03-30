@@ -93,8 +93,7 @@ const SortedCountries = ({ url, isoCodes }) => {
         {data.slice((page - 1) * 20, page * 20).map((country, index) => {
           return (
             <Link
-              to={`/country/${country.name.common}`}
-              // to={`/country/${country.cca3}`}
+              to={`/country/${country.name.official}`}
               key={index}
               state={{
                 from: `/countries/sort?name=${name}&pop=${pop}&area=${area}&page=${page}`,
