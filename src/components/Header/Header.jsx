@@ -1,17 +1,23 @@
 import { useNavigate } from "react-router-dom";
+// Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = () => {
   const navigate = useNavigate();
   return (
-    <header>
-      <div>HEADER</div>
-      <button
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        Home
-      </button>
+    <header className="flex-row">
+      <div>
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <FontAwesomeIcon icon="fa-solid fa-house" className="icon" />
+        </button>
+      </div>
+      <div className="flex-row">
+        <p>COUNTRIES</p>
+      </div>
     </header>
   );
 };

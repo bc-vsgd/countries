@@ -45,14 +45,22 @@ const SearchComponent = ({
   return (
     <>
       {/* Sort select */}
-      <select name="sort" id="sort-select" onChange={handleSortSelect}>
-        <option value="name-asc">Name A-Z</option>
-        <option value="name-desc">Name Z-A</option>
-        <option value="pop-asc">Population +</option>
-        <option value="pop-desc">Population -</option>
-        <option value="area-asc">Area +</option>
-        <option value="area-desc">Area -</option>
-      </select>
+      <div className="search-comp flex-row">
+        <p>Sort by</p>
+        <select
+          name="sort"
+          id="sort-select"
+          className="sort-select"
+          onChange={handleSortSelect}
+        >
+          <option value="name-asc">Alphabetical order A - Z</option>
+          <option value="name-desc">Alphabetical order Z - A</option>
+          <option value="pop-asc">Population: ascending order</option>
+          <option value="pop-desc">Population: descending order</option>
+          <option value="area-asc">Area: ascending order</option>
+          <option value="area-desc">Area: descending order</option>
+        </select>
+      </div>
     </>
   );
 };

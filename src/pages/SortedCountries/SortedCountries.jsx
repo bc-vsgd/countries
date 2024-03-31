@@ -64,7 +64,7 @@ const SortedCountries = ({ url, isoCodes }) => {
   return isLoading ? (
     <Loading />
   ) : (
-    <>
+    <div className="sorted-page container">
       <SearchComponent
         setPageTitle={setPageTitle}
         setPage={setPage}
@@ -73,9 +73,30 @@ const SortedCountries = ({ url, isoCodes }) => {
         setPop={setPop}
         setArea={setArea}
       />
+      {/* Page title (h1) */}
       {(name || pop || area) && (
         <h1>
-          Sort by {pageTitle[0]} {pageTitle[1]}
+          <span>
+            <span>Countries sorted by </span>
+            {name && pageTitle[1] === "asc" && (
+              <span> ascending alphabetical order</span>
+            )}
+            {name && pageTitle[1] === "desc" && (
+              <span> descending alphabetical order</span>
+            )}
+            {pop && pageTitle[1] === "asc" && (
+              <span>ascending population order</span>
+            )}
+            {pop && pageTitle[1] === "desc" && (
+              <span>descending population order</span>
+            )}
+            {area && pageTitle[1] === "asc" && (
+              <span>ascending area order</span>
+            )}
+            {area && pageTitle[1] === "desc" && (
+              <span>descending area order</span>
+            )}
+          </span>
         </h1>
       )}
 
@@ -89,7 +110,7 @@ const SortedCountries = ({ url, isoCodes }) => {
         setSearchParams={setSearchParams}
       />
 
-      <div>
+      <div className="sorted-thumbnails flex-row">
         {data.slice((page - 1) * 20, page * 20).map((country, index) => {
           return (
             <Link
@@ -111,7 +132,7 @@ const SortedCountries = ({ url, isoCodes }) => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

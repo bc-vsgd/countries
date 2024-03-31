@@ -1,0 +1,29 @@
+header {
+  padding: 30px 20px 40px 20px;
+}
+
+/* Home icon div */
+header div:first-child {
+  width: 10%;
+}
+header button {
+  background-color: white;
+  border: 1px solid black;
+  margin: 0 50px;
+  padding: 10px;
+  border-radius: 50%;
+}
+header .icon {
+  font-size: 24px;
+}
+
+/* Title div */
+header div:nth-child(2) {
+  width: 80%;
+  border: 1px solid blue;
+  justify-content: center;
+}
+header div:nth-child(2) p {
+  font-size: 48px;
+  border: 1px solid black;
+}

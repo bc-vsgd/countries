@@ -1,0 +1,20 @@
+.pagination-comp {
+  align-items: center;
+  padding: 20px;
+}
+.pagination-comp > * {
+  width: 40px;
+}
+.pagination-comp button {
+  background-color: white;
+  border: 1px solid black;
+  padding: 5px 0;
+  border-radius: 50%;
+}
+.pagination-comp .icon {
+  font-size: 24px;
+}
+.pagination-comp p {
+  text-align: center;
+  font-size: 22px;
+}

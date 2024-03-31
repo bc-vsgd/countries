@@ -1,3 +1,5 @@
+// Displays a country thumbnail with name & flag, & if sorted by population or area: number & pop / area, & if sorted by name: pop & area
+
 // Population, area: add spaces between groups of 3 numbers
 const strWithSpaces = (initialStr) => {
   if (Number(initialStr) >= 3) {
@@ -31,18 +33,37 @@ const strWithSpaces = (initialStr) => {
 
 const ThumbnailComponent = ({ index, country, page, name, pop, area }) => {
   return (
-    <div className="thumbnail">
-      <div>{country.name.common}</div>
+    <div className="thumbnail flex-col">
+      <h2>{country.name.common}</h2>
       <img src={country.flags.svg} className="thumbnail-flag" alt="Flag" />
-      {/* If sort by population or area: sort number */}
-      {(pop || area) && <p>{(page - 1) * 20 + index + 1}</p>}
-      {/* Sort by population or alphabetical */}
-      {(pop || name) && (
-        <div>Population: {strWithSpaces(country.population.toString())}</div>
+      {/* Population or area sort */}
+      {(pop || area) && (
+        <div>
+          <p className="flex-row">
+            <span>{(page - 1) * 20 + index + 1}.</span>
+            {/* Population sort */}
+            {pop && (
+              <span>
+                Population: {strWithSpaces(country.population.toString())}{" "}
+                inhab.
+              </span>
+            )}
+            {/* Area sort */}
+            {area && (
+              <span>Area: {strWithSpaces(country.area.toString())} km2</span>
+            )}
+          </p>
+        </div>
       )}
-      {/* Sort by area or alphabetical */}
-      {(area || name) && (
-        <div>Area: {strWithSpaces(country.area.toString())} km2</div>
+      {/* Name sort */}
+      {name && (
+        <div>
+          <p>
+            Population: {strWithSpaces(country.population.toString())}
+            inhab.
+          </p>
+          <p>Area: {strWithSpaces(country.area.toString())} km2</p>
+        </div>
       )}
     </div>
   );

@@ -1,0 +1,17 @@
+/* Page title (h1) */
+.sorted-page h1 {
+  font-size: 28px;
+  text-align: center;
+  padding-top: 30px;
+  margin-bottom: 20px;
+}
+.sorted-page h1 > span {
+  padding: 20px;
+  border-bottom: 1px solid blue;
+}
+
+/* Thumbnails */
+.sorted-page .sorted-thumbnails {
+  justify-content: center;
+  flex-wrap: wrap;
+}

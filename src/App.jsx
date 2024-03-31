@@ -8,6 +8,16 @@ import CountryPage from "./pages/CountryPage/CountryPage";
 import Header from "./components/Header/Header";
 // Style
 import "./App.css";
+// Icons
+import { library } from "@fortawesome/fontawesome-svg-core";
+// Solid icons
+import {
+  faHouse,
+  faArrowTurnUp,
+  faAngleLeft,
+  faAngleRight,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faHouse, faArrowTurnUp, faAngleLeft, faAngleRight);
 
 const countriesUrl = "http://localhost:3000";
 

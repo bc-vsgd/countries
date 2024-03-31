@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const PaginationComponent = ({
   page,
   setPage,
@@ -8,7 +10,7 @@ const PaginationComponent = ({
   setSearchParams,
 }) => {
   return (
-    <div className="flex-row">
+    <div className="pagination-comp flex-row">
       <button
         onClick={() => {
           if (page > 1) {
@@ -35,7 +37,7 @@ const PaginationComponent = ({
           }
         }}
       >
-        -
+        <FontAwesomeIcon icon="fa-solid fa-angle-left" className="icon" />
       </button>
       <p>{page}</p>
       <button
@@ -64,7 +66,7 @@ const PaginationComponent = ({
           }
         }}
       >
-        +
+        <FontAwesomeIcon icon="fa-solid fa-angle-right" className="icon" />
       </button>
     </div>
   );
