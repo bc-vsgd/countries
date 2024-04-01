@@ -38,31 +38,41 @@ const ThumbnailComponent = ({ index, country, page, name, pop, area }) => {
       <img src={country.flags.svg} className="thumbnail-flag" alt="Flag" />
       {/* Population or area sort */}
       {(pop || area) && (
-        <div>
+        <div className="flex-col">
           <p className="flex-row">
             <span>{(page - 1) * 20 + index + 1}.</span>
             {/* Population sort */}
             {pop && (
-              <span>
-                Population: {strWithSpaces(country.population.toString())}{" "}
-                inhab.
-              </span>
+              <>
+                <span>
+                  Population : {strWithSpaces(country.population.toString())}
+                </span>
+                <span>inhab.</span>
+              </>
             )}
             {/* Area sort */}
             {area && (
-              <span>Area: {strWithSpaces(country.area.toString())} km2</span>
+              <>
+                <span>Area : {strWithSpaces(country.area.toString())}</span>
+                <span>km2</span>
+              </>
             )}
           </p>
         </div>
       )}
       {/* Name sort */}
       {name && (
-        <div>
-          <p>
-            Population: {strWithSpaces(country.population.toString())}
-            inhab.
+        <div className="flex-col">
+          <p className="flex-row">
+            <span>
+              Population : {strWithSpaces(country.population.toString())}
+            </span>
+            <span>inhab.</span>
           </p>
-          <p>Area: {strWithSpaces(country.area.toString())} km2</p>
+          <p className="flex-row">
+            <span>Area : {strWithSpaces(country.area.toString())}</span>
+            <span>km2</span>
+          </p>
         </div>
       )}
     </div>

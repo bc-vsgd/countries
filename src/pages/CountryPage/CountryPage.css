@@ -1,6 +1,91 @@
-.country-flag,
-.coat-of-arms {
+.country-page {
+  gap: 20px;
+  font-size: 18px;
+}
+.country-page > * {
+  /* border: 1px solid black; */
+  padding-bottom: 20px;
+  /* border-bottom: 1px solid black; */
+}
+
+/* Back button */
+.country-page button {
+  background-color: white;
+  border: 1px solid black;
+  width: 100px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+.country-page .icon {
+  font-size: 24px;
+}
+
+/* H1 */
+.country-page h1 {
+  font-size: 28px;
+  text-align: center;
+  padding-top: 30px;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+/* Info div: capital & its name, population & its number ... */
+.country-page .info-div {
+  justify-content: center;
+  margin-bottom: 10px;
+  /* border-bottom: 1px solid grey; */
+}
+/* Title: capital, population, ... */
+.country-page .info-div > div:first-of-type {
   width: 200px;
-  height: 100px;
+  padding: 10px;
+  /* border: 1px solid blue; */
+  border-bottom: 1px solid grey;
+}
+/* Content: capital name, languages names, ... */
+.country-page .info-div > div:nth-of-type(2) {
+  width: 500px;
+  padding: 10px;
+  /* border: 1px solid red; */
+  border-bottom: 1px solid grey;
+  /* If several elements */
+  gap: 5px;
+}
+
+/* Flag div */
+.country-page .flag-div {
+  gap: 20px;
+}
+.country-page .flag-div > div:first-of-type {
+  border: 1px solid black;
+  background-color: #fafafa;
+  margin: 0 auto;
+  padding: 20px;
+}
+.country-page .flag-div img {
+  width: 400px;
+  height: 250px;
   object-fit: contain;
+}
+.country-page .flag-div > div:nth-of-type(2) {
+  width: 900px;
+  margin: 0 auto;
+  line-height: 24px;
+  text-align: center;
+}
+
+/* Coat of arms div */
+.country-page .arms-div > div:nth-of-type(2) {
+  /* background-color: green; */
+}
+.country-page .arms-div img {
+  margin: 0 auto;
+}
+.country-page .coat-of-arms {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  /* border: 1px solid blue; */
 }

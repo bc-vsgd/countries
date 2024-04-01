@@ -1,8 +1,9 @@
 .thumbnail {
-  /* background-color: lightcyan; */
-  width: 300px;
+  background-color: #fafafa;
+  width: 320px;
   height: 250px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  border-radius: 5px;
   padding: 20px;
   margin: 10px;
   align-items: center;
@@ -17,7 +18,9 @@
   height: 100px;
   object-fit: contain;
 }
-/* .thumbnail > div:first-of-type {
-  justify-content: space-between;
-  border: 1px solid green;
-} */
+.thumbnail > div:first-of-type {
+  gap: 10px;
+}
+.thumbnail > div:first-of-type p {
+  gap: 5px;
+}
