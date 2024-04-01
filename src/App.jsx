@@ -14,15 +14,18 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faHouse,
   faArrowTurnUp,
+  faArrowTurnDown,
   faAngleLeft,
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faHouse, faArrowTurnUp, faAngleLeft, faAngleRight);
+library.add(faHouse, faArrowTurnUp, faArrowTurnDown, faAngleLeft, faAngleRight);
 
 const countriesUrl = "http://localhost:3000";
 
 function App() {
   const [isoCodes, setIsoCodes] = useState([]);
+  // Sort option
+  const [option, setOption] = useState("name-asc");
   return (
     <Router>
       <Header />
@@ -35,7 +38,14 @@ function App() {
         {/* Sorted countries page */}
         <Route
           path="/countries/sort"
-          element={<SortedCountries url={countriesUrl} isoCodes={isoCodes} />}
+          element={
+            <SortedCountries
+              url={countriesUrl}
+              isoCodes={isoCodes}
+              option={option}
+              setOption={setOption}
+            />
+          }
         />
         {/* One country page */}
         <Route

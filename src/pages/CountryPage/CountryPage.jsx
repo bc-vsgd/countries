@@ -151,9 +151,10 @@ const CountryPage = ({ url, isoCodes }) => {
             <div className="flex-col">
               {languages.map((language, index) => {
                 return (
-                  <p key={index}>
-                    {language[1]}: {language[2]}
-                  </p>
+                  <div key={index} className="flex-row">
+                    <p className="native-name-lang">{language[1]}:</p>
+                    <p>{language[2]}</p>
+                  </div>
                 );
               })}
             </div>

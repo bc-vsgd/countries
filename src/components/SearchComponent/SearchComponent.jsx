@@ -1,6 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import Select from "react-select";
+// Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SearchComponent = ({
+  setIsLoading,
+  option,
+  setOption,
   setPage,
   setSearchParams,
   setName,
@@ -9,10 +15,46 @@ const SearchComponent = ({
 }) => {
   const navigate = useNavigate();
 
+  // Array of select options
+  const selectOptions = [
+    {
+      value: "name-asc",
+      label: "Alphabetical order",
+      icon: <FontAwesomeIcon icon="fa-solid fa-arrow-turn-up" />,
+    },
+    {
+      value: "name-desc",
+      label: "Alphabetical order",
+      icon: <FontAwesomeIcon icon="fa-solid fa-arrow-turn-down" />,
+    },
+    {
+      value: "pop-asc",
+      label: "Population",
+      icon: <FontAwesomeIcon icon="fa-solid fa-arrow-turn-up" />,
+    },
+    {
+      value: "pop-desc",
+      label: "Population",
+      icon: <FontAwesomeIcon icon="fa-solid fa-arrow-turn-down" />,
+    },
+    {
+      value: "area-asc",
+      label: "Area",
+      icon: <FontAwesomeIcon icon="fa-solid fa-arrow-turn-up" />,
+    },
+    {
+      value: "area-desc",
+      label: "Area",
+      icon: <FontAwesomeIcon icon="fa-solid fa-arrow-turn-down" />,
+    },
+  ];
   // Name, population, area sort
   const handleSortSelect = (event) => {
+    // console.log("value: ", event.value);
+    setOption(event.value);
+    setIsLoading(true);
     setPage(1);
-    const arr = event.target.value.split("-");
+    const arr = event.value.split("-");
     // Name sort
     if (arr[0] === "name") {
       setSearchParams({ name: arr[1] });
@@ -46,20 +88,21 @@ const SearchComponent = ({
     <>
       {/* Sort select */}
       <div className="search-comp flex-row">
-        <p>Sort by</p>
-        <select
-          name="sort"
-          id="sort-select"
+        <Select
           className="sort-select"
+          placeholder="Sort by"
+          value={option}
+          options={selectOptions}
           onChange={handleSortSelect}
-        >
-          <option value="name-asc">Alphabetical order A - Z</option>
-          <option value="name-desc">Alphabetical order Z - A</option>
-          <option value="pop-asc">Population: ascending order</option>
-          <option value="pop-desc">Population: descending order</option>
-          <option value="area-asc">Area: ascending order</option>
-          <option value="area-desc">Area: descending order</option>
-        </select>
+          getOptionLabel={(e) => {
+            return (
+              <div className="flex-row">
+                <p>{e.label}</p>
+                <p>{e.icon}</p>
+              </div>
+            );
+          }}
+        />
       </div>
     </>
   );

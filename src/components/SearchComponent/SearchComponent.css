@@ -4,11 +4,15 @@
   align-items: center;
   gap: 15px;
 }
-.search-comp p {
+.search-comp .sort-select {
+  width: 300px;
+  padding: 5px;
   font-size: 18px;
 }
 
-.sort-select {
-  padding: 5px;
+.search-comp .sort-select div {
+  gap: 10px;
+}
+.search-comp p {
   font-size: 18px;
 }

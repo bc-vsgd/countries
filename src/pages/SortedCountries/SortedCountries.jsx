@@ -7,7 +7,7 @@ import SearchComponent from "../../components/SearchComponent/SearchComponent";
 import PaginationComponent from "../../components/PaginationComponent/PaginationComponent";
 import ThumbnailComponent from "../../components/Thumbnail/ThumbnailComponent";
 
-const SortedCountries = ({ url, isoCodes }) => {
+const SortedCountries = ({ url, isoCodes, option, setOption }) => {
   // console.log("sorted page, iso codes: ", isoCodes);
   // States
   const [data, setData] = useState(null);
@@ -66,6 +66,9 @@ const SortedCountries = ({ url, isoCodes }) => {
   ) : (
     <div className="sorted-page container">
       <SearchComponent
+        setIsLoading={setIsLoading}
+        option={option}
+        setOption={setOption}
         setPageTitle={setPageTitle}
         setPage={setPage}
         setSearchParams={setSearchParams}
