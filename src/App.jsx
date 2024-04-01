@@ -26,6 +26,9 @@ function App() {
   const [isoCodes, setIsoCodes] = useState([]);
   // Sort option
   const [option, setOption] = useState("name-asc");
+  const [continents, setContinents] = useState([]);
+  const [currencies, setCurrencies] = useState([]);
+  const [languages, setLanguages] = useState([]);
   return (
     <Router>
       <Header />
@@ -33,7 +36,15 @@ function App() {
         {/* Home --> Sorted countries page */}
         <Route
           path="/"
-          element={<HomePage url={countriesUrl} setIsoCodes={setIsoCodes} />}
+          element={
+            <HomePage
+              url={countriesUrl}
+              setIsoCodes={setIsoCodes}
+              setContinents={setContinents}
+              setCurrencies={setCurrencies}
+              setLanguages={setLanguages}
+            />
+          }
         />
         {/* Sorted countries page */}
         <Route
@@ -44,6 +55,9 @@ function App() {
               isoCodes={isoCodes}
               option={option}
               setOption={setOption}
+              continents={continents}
+              currencies={currencies}
+              languages={languages}
             />
           }
         />

@@ -14,6 +14,7 @@ const SearchComponent = ({
   setArea,
 }) => {
   const navigate = useNavigate();
+  // console.log("option: ", option);
 
   // Array of select options
   const selectOptions = [

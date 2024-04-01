@@ -7,8 +7,19 @@ import SearchComponent from "../../components/SearchComponent/SearchComponent";
 import PaginationComponent from "../../components/PaginationComponent/PaginationComponent";
 import ThumbnailComponent from "../../components/Thumbnail/ThumbnailComponent";
 
-const SortedCountries = ({ url, isoCodes, option, setOption }) => {
+const SortedCountries = ({
+  url,
+  isoCodes,
+  option,
+  setOption,
+  continents,
+  currencies,
+  languages,
+}) => {
   // console.log("sorted page, iso codes: ", isoCodes);
+  // console.log("sorted page, continents: ", continents);
+  // console.log("sorted page, currencies: ", currencies);
+  // console.log("sorted page, languages: ", languages);
   // States
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
