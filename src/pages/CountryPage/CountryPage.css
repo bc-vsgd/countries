@@ -3,20 +3,25 @@
   font-size: 18px;
 }
 .country-page > * {
-  /* border: 1px solid black; */
-  padding-bottom: 20px;
+  border: 1px dotted grey;
+  border-radius: 10px;
+  padding: 20px 0;
   /* border-bottom: 1px solid black; */
 }
 
 /* Back button */
+.country-page .back-btn-div {
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+}
 .country-page button {
   background-color: white;
   border: 1px solid black;
-  width: 100px;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 15px;
-  border-radius: 10px;
+  padding: 10px 15px;
+  border-radius: 50%;
   font-size: 16px;
 }
 .country-page .icon {
@@ -27,35 +32,35 @@
 .country-page h1 {
   font-size: 28px;
   text-align: center;
-  padding-top: 30px;
-  margin-bottom: 20px;
+  padding: 20px 0 30px 0;
+  margin-bottom: 30px;
   gap: 20px;
+  border-bottom: 1px solid grey;
 }
 
 /* Native name(s) */
 .country-page .native-name-lang {
-  width: 200px;
+  width: 170px;
 }
 
 /* Info div: capital & its name, population & its number ... */
 .country-page .info-div {
   justify-content: center;
   margin-bottom: 10px;
+  gap: 10px;
   /* border-bottom: 1px solid grey; */
 }
 /* Title: capital, population, ... */
 .country-page .info-div > div:first-of-type {
   width: 200px;
-  padding: 10px;
-  /* border: 1px solid blue; */
+  padding: 10px 10px 20px 10px;
   border-bottom: 1px solid grey;
 }
 /* Content: capital name, languages names, ... */
 .country-page .info-div > div:nth-of-type(2) {
   width: 500px;
-  padding: 10px;
-  /* border: 1px solid red; */
-  border-bottom: 1px solid grey;
+  padding: 10px 10px 20px 10px;
+  /* border-bottom: 1px solid grey; */
   /* If several elements */
   gap: 5px;
 }
@@ -83,9 +88,6 @@
 }
 
 /* Coat of arms div */
-.country-page .arms-div > div:nth-of-type(2) {
-  /* background-color: green; */
-}
 .country-page .arms-div img {
   margin: 0 auto;
 }

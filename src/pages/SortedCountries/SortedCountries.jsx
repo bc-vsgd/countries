@@ -91,24 +91,24 @@ const SortedCountries = ({
       {(name || pop || area) && (
         <h1>
           <span>
-            <span>Countries sorted by </span>
+            {/* <span>Countries sorted by </span> */}
             {name && pageTitle[1] === "asc" && (
-              <span> ascending alphabetical order</span>
+              <span>Ascending alphabetical order</span>
             )}
             {name && pageTitle[1] === "desc" && (
-              <span> descending alphabetical order</span>
+              <span>Descending alphabetical order</span>
             )}
             {pop && pageTitle[1] === "asc" && (
-              <span>ascending population order</span>
+              <span>Ascending population order</span>
             )}
             {pop && pageTitle[1] === "desc" && (
-              <span>descending population order</span>
+              <span>Descending population order</span>
             )}
             {area && pageTitle[1] === "asc" && (
-              <span>ascending area order</span>
+              <span>Ascending area order</span>
             )}
             {area && pageTitle[1] === "desc" && (
-              <span>descending area order</span>
+              <span>Descending area order</span>
             )}
           </span>
         </h1>

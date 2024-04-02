@@ -117,7 +117,7 @@ const CountryPage = ({ url, isoCodes }) => {
   ) : (
     <div className="country-page container flex-col">
       {/* Back to previous page */}
-      <div>
+      <div className="back-btn-div flex-row">
         <button
           className="flex-row"
           onClick={() => {
@@ -129,8 +129,8 @@ const CountryPage = ({ url, isoCodes }) => {
           }}
         >
           <FontAwesomeIcon icon="fa-solid fa-angle-left" className="icon" />
-          Back
         </button>
+        <p>Back</p>
       </div>
       {/* Name */}
       <div className="flex-col">
@@ -143,16 +143,16 @@ const CountryPage = ({ url, isoCodes }) => {
           <div className="info-div flex-row">
             <div>
               {languages.length === 1 ? (
-                <p>Native name:</p>
+                <p>Native name</p>
               ) : (
-                <p>Native names:</p>
+                <p>Native names</p>
               )}
             </div>
             <div className="flex-col">
               {languages.map((language, index) => {
                 return (
                   <div key={index} className="flex-row">
-                    <p className="native-name-lang">{language[1]}:</p>
+                    <p className="native-name-lang">{language[1]} :</p>
                     <p>{language[2]}</p>
                   </div>
                 );
@@ -172,28 +172,28 @@ const CountryPage = ({ url, isoCodes }) => {
       <div>
         {data.capital && (
           <div className="info-div flex-row">
-            <div>Capital:</div>
+            <div>Capital</div>
             <div>{data.capital}</div>
           </div>
         )}
         {/* States: population, area */}
 
         <div className="info-div flex-row">
-          <div>Population:</div>
+          <div>Population</div>
           <div>{population} inhab.</div>
         </div>
         <div className="info-div flex-row">
-          <div>Area:</div>
-          <div>{area} km2</div>
+          <div>Area</div>
+          <div>{area} km²</div>
         </div>
         {/* If languages */}
         {data.languages && (
           <div className="info-div flex-row">
             <div>
               {Object.entries(data.languages).length === 1 ? (
-                <p>Language:</p>
+                <p>Language</p>
               ) : (
-                <p>Languages:</p>
+                <p>Languages</p>
               )}
             </div>
             <div className="flex-col">
@@ -207,13 +207,13 @@ const CountryPage = ({ url, isoCodes }) => {
       {/* Region, subregion, borders */}
       <div>
         <div className="info-div flex-row">
-          <div>Continent:</div>
+          <div>Continent</div>
           <div>{data.region}</div>
         </div>
 
         {data.subregion && (
           <div className="info-div flex-row">
-            <div>Subregion:</div>
+            <div>Subregion</div>
             <div>{data.subregion}</div>
           </div>
         )}
@@ -237,7 +237,7 @@ const CountryPage = ({ url, isoCodes }) => {
         {data.borders && (
           <div className="info-div flex-row">
             {/* State: borders */}
-            <div>{borders.length === 1 ? <p>Border:</p> : <p>Borders:</p>}</div>
+            <div>{borders.length === 1 ? <p>Border</p> : <p>Borders</p>}</div>
             <div className="flex-col">
               {borders.map((border, index) => {
                 return <p key={index}>{border}</p>;
@@ -248,31 +248,35 @@ const CountryPage = ({ url, isoCodes }) => {
       </div>
       {/* If Currencies */}
       {data.currencies && (
-        <div className="info-div flex-row">
-          <div>
-            {Object.keys(data.currencies).length === 1 ? (
-              <p>Currency:</p>
-            ) : (
-              <p>Currencies:</p>
-            )}
-          </div>
-          <div className="flex-col">
-            {Object.values(data.currencies).map((currency, index) => {
-              return <p key={index}>{currency.name}</p>;
-            })}
+        <div>
+          <div className="info-div flex-row">
+            <div>
+              {Object.keys(data.currencies).length === 1 ? (
+                <p>Currency</p>
+              ) : (
+                <p>Currencies</p>
+              )}
+            </div>
+            <div className="flex-col">
+              {Object.values(data.currencies).map((currency, index) => {
+                return <p key={index}>{currency.name}</p>;
+              })}
+            </div>
           </div>
         </div>
       )}
       {/* If coat of arms */}
       {data.coatOfArms.svg && (
-        <div className="info-div arms-div flex-row">
-          <div>Coat of arms:</div>
-          <div>
-            <img
-              src={data.coatOfArms.svg}
-              className="coat-of-arms"
-              alt="Coat of arms"
-            />
+        <div>
+          <div className="info-div arms-div flex-row">
+            <div>Coat of arms</div>
+            <div>
+              <img
+                src={data.coatOfArms.svg}
+                className="coat-of-arms"
+                alt="Coat of arms"
+              />
+            </div>
           </div>
         </div>
       )}

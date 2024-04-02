@@ -54,7 +54,7 @@ const ThumbnailComponent = ({ index, country, page, name, pop, area }) => {
             {area && (
               <>
                 <span>Area : {strWithSpaces(country.area.toString())}</span>
-                <span>km2</span>
+                <span>km²</span>
               </>
             )}
           </p>

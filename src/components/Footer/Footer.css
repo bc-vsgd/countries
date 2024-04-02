@@ -1,0 +1,22 @@
+footer {
+  height: 80px;
+  border-top: 1px solid grey;
+  padding: 30px 0;
+  margin-top: 20px;
+}
+footer > div {
+  width: 250px;
+  margin: 0 auto;
+  align-items: center;
+  gap: 10px;
+}
+
+footer b {
+  font-weight: bold;
+}
+footer .icon {
+  font-size: 24px;
+}
+footer .fa-linkedin {
+  color: #0b65c2;
+}

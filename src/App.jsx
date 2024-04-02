@@ -6,6 +6,7 @@ import SortedCountries from "./pages/SortedCountries/SortedCountries";
 import CountryPage from "./pages/CountryPage/CountryPage";
 // Components
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 // Style
 import "./App.css";
 // Icons
@@ -18,7 +19,16 @@ import {
   faAngleLeft,
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faHouse, faArrowTurnUp, faArrowTurnDown, faAngleLeft, faAngleRight);
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+library.add(
+  faHouse,
+  faArrowTurnUp,
+  faArrowTurnDown,
+  faAngleLeft,
+  faAngleRight,
+  faLinkedin,
+  faGithub
+);
 
 const countriesUrl = "http://localhost:3000";
 
@@ -67,6 +77,7 @@ function App() {
           element={<CountryPage url={countriesUrl} isoCodes={isoCodes} />}
         />
       </Routes>
+      <Footer />
     </Router>
   );
 }
