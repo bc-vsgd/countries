@@ -19,6 +19,7 @@ import {
   faAngleLeft,
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
+// Brand icons
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 library.add(
   faHouse,
@@ -62,7 +63,21 @@ function App() {
           element={
             <SortedCountries
               url={countriesUrl}
-              isoCodes={isoCodes}
+              // isoCodes={isoCodes}
+              option={option}
+              setOption={setOption}
+              continents={continents}
+              currencies={currencies}
+              languages={languages}
+            />
+          }
+        />
+        <Route
+          path="/countries/search"
+          element={
+            <SortedCountries
+              url={countriesUrl}
+              // isoCodes={isoCodes}
               option={option}
               setOption={setOption}
               continents={continents}

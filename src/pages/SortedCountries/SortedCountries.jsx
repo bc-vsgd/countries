@@ -9,7 +9,7 @@ import ThumbnailComponent from "../../components/Thumbnail/ThumbnailComponent";
 
 const SortedCountries = ({
   url,
-  isoCodes,
+  // isoCodes,
   option,
   setOption,
   continents,
@@ -29,9 +29,16 @@ const SortedCountries = ({
   const [maxPage, setMaxPage] = useState(1);
   // Query params
   const [searchParams, setSearchParams] = useSearchParams();
+  // Sort
   const [name, setName] = useState(searchParams.get("name") || "");
   const [pop, setPop] = useState(searchParams.get("pop") || "");
   const [area, setArea] = useState(searchParams.get("area") || "");
+  // Search
+  const [nameSearch, setNameSearch] = useState(
+    searchParams.get("namesearch") || ""
+  );
+  const [continent, setContinent] = useState(searchParams.get("cont") || "");
+  // Page
   const [page, setPage] = useState(Number(searchParams.get("page")) || 1);
 
   useEffect(() => {
@@ -64,13 +71,31 @@ const SortedCountries = ({
           setPageTitle(["area", area]);
           setMaxPage(Math.ceil(data.data.length / 20));
         }
+        if (nameSearch) {
+          const { data } = await axios.get(
+            `${url}/countries/search?namesearch=${nameSearch}`
+          );
+          // console.log("Sorted page, data (name search): ", data.data);
+          setData(data.data);
+          setPageTitle(["name search", nameSearch]);
+          setMaxPage(Math.ceil(data.data.length / 20));
+        }
+        if (continent) {
+          const { data } = await axios.get(
+            `${url}/countries/search?cont=${continent}`
+          );
+          console.log("Sorted page, data (continent search): ", data.data);
+          setData(data.data);
+          setPageTitle(["continent search", continent]);
+          setMaxPage(Math.ceil(data.data.length / 20));
+        }
       } catch (error) {
         console.log("sorted page, error >>> ", error);
       }
       setIsLoading(false);
     };
     fetchData();
-  }, [name, pop, area, page]);
+  }, [name, pop, area, page, nameSearch, continent]);
 
   return isLoading ? (
     <Loading />
@@ -83,12 +108,18 @@ const SortedCountries = ({
         setPageTitle={setPageTitle}
         setPage={setPage}
         setSearchParams={setSearchParams}
+        // Name, pop or area sort
         setName={setName}
         setPop={setPop}
         setArea={setArea}
+        // Name, continent search
+        setNameSearch={setNameSearch}
+        // Regions & subregions array
+        continents={continents}
+        setContinent={setContinent}
       />
       {/* Page title (h1) */}
-      {(name || pop || area) && (
+      {name || pop || area ? (
         <h1>
           <span>
             {/* <span>Countries sorted by </span> */}
@@ -112,6 +143,12 @@ const SortedCountries = ({
             )}
           </span>
         </h1>
+      ) : (
+        nameSearch && (
+          <h1>
+            <span>Search by name : "{nameSearch}"</span>
+          </h1>
+        )
       )}
 
       <PaginationComponent
@@ -127,27 +164,63 @@ const SortedCountries = ({
       <div className="sorted-thumbnails flex-row">
         {data.slice((page - 1) * 20, page * 20).map((country, index) => {
           return (
-            <Link
-              to={`/country/${country.name.official}`}
-              key={index}
-              state={{
-                from: `/countries/sort?name=${name}&pop=${pop}&area=${area}&page=${page}`,
-              }}
-            >
-              <ThumbnailComponent
-                index={index}
-                country={country}
-                page={page}
-                name={name}
-                pop={pop}
-                area={area}
-              />
-            </Link>
+            // Name, pop or area sort
+            name || pop || area ? (
+              <Link
+                to={`/country/${country.name.official}`}
+                key={index}
+                state={{
+                  from: `/countries/sort?name=${name}&pop=${pop}&area=${area}&page=${page}`,
+                }}
+              >
+                <ThumbnailComponent
+                  index={index}
+                  country={country}
+                  page={page}
+                  name={name}
+                  pop={pop}
+                  area={area}
+                />
+              </Link>
+            ) : nameSearch ? (
+              <Link
+                to={`/country/${country.name.official}`}
+                key={index}
+                state={{
+                  from: `/countries/search?namesearch=${nameSearch}`,
+                }}
+              >
+                <ThumbnailComponent
+                  index={index}
+                  country={country}
+                  page={page}
+                  name={name}
+                  pop={pop}
+                  area={area}
+                />
+              </Link>
+            ) : (
+              <Link
+                to={`/country/${country.name.official}`}
+                key={index}
+                state={{
+                  from: `/countries/search?cont=${continent}`,
+                }}
+              >
+                <ThumbnailComponent
+                  index={index}
+                  country={country}
+                  page={page}
+                  name={name}
+                  pop={pop}
+                  area={area}
+                />
+              </Link>
+            )
           );
         })}
       </div>
     </div>
   );
 };
-
 export default SortedCountries;
