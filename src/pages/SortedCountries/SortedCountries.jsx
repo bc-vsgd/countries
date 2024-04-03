@@ -20,7 +20,8 @@ const SortedCountries = ({
   // console.log("sorted page, continents: ", continents);
   // console.log("sorted page, currencies: ", currencies);
   // console.log("sorted page, languages: ", languages);
-  // States
+
+  // STATES
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   // Page title
@@ -29,15 +30,17 @@ const SortedCountries = ({
   const [maxPage, setMaxPage] = useState(1);
   // Query params
   const [searchParams, setSearchParams] = useSearchParams();
-  // Sort
+  // Sort: name, population, area
   const [name, setName] = useState(searchParams.get("name") || "");
   const [pop, setPop] = useState(searchParams.get("pop") || "");
   const [area, setArea] = useState(searchParams.get("area") || "");
-  // Search
+  // Search: name, continent, language, currency
   const [nameSearch, setNameSearch] = useState(
     searchParams.get("namesearch") || ""
   );
   const [continent, setContinent] = useState(searchParams.get("cont") || "");
+  const [language, setLanguage] = useState(searchParams.get("lang") || "");
+  const [currency, setCurrency] = useState(searchParams.get("curr") || "");
   // Page
   const [page, setPage] = useState(Number(searchParams.get("page")) || 1);
 
@@ -84,9 +87,27 @@ const SortedCountries = ({
           const { data } = await axios.get(
             `${url}/countries/search?cont=${continent}`
           );
-          console.log("Sorted page, data (continent search): ", data.data);
+          // console.log("Sorted page, data (continent search): ", data.data);
           setData(data.data);
           setPageTitle(["continent search", continent]);
+          setMaxPage(Math.ceil(data.data.length / 20));
+        }
+        if (language) {
+          const { data } = await axios.get(
+            `${url}/countries/search?lang=${language}`
+          );
+          // console.log("Sorted page, data (language search): ", data.data);
+          setData(data.data);
+          setPageTitle(["language search", language]);
+          setMaxPage(Math.ceil(data.data.length / 20));
+        }
+        if (currency) {
+          const { data } = await axios.get(
+            `${url}/countries/search?curr=${currency}`
+          );
+          // console.log("Sorted page, data (currency search)", data.data);
+          setData(data.data);
+          setPageTitle(["currency search", currency]);
           setMaxPage(Math.ceil(data.data.length / 20));
         }
       } catch (error) {
@@ -95,7 +116,7 @@ const SortedCountries = ({
       setIsLoading(false);
     };
     fetchData();
-  }, [name, pop, area, page, nameSearch, continent]);
+  }, [name, pop, area, page, nameSearch, continent, language, currency]);
 
   return isLoading ? (
     <Loading />
@@ -112,11 +133,17 @@ const SortedCountries = ({
         setName={setName}
         setPop={setPop}
         setArea={setArea}
-        // Name, continent search
+        // Name, continent, language, currency search
         setNameSearch={setNameSearch}
-        // Regions & subregions array
+        // Regions & subregions array, selected continent
         continents={continents}
         setContinent={setContinent}
+        // Languages array, selected language
+        languages={languages}
+        setLanguage={setLanguage}
+        // Currencies array, selected currency
+        currencies={currencies}
+        setCurrency={setCurrency}
       />
       {/* Page title (h1) */}
       {name || pop || area ? (
@@ -143,10 +170,22 @@ const SortedCountries = ({
             )}
           </span>
         </h1>
+      ) : nameSearch ? (
+        <h1>
+          <span>Search by name : "{nameSearch}"</span>
+        </h1>
+      ) : continent ? (
+        <h1>
+          <span>{continent}</span>
+        </h1>
+      ) : language ? (
+        <h1>
+          <span>Language: {language}</span>
+        </h1>
       ) : (
-        nameSearch && (
+        currency && (
           <h1>
-            <span>Search by name : "{nameSearch}"</span>
+            <span>Currency: {currency}</span>
           </h1>
         )
       )}
@@ -158,6 +197,10 @@ const SortedCountries = ({
         name={name}
         pop={pop}
         area={area}
+        nameSearch={nameSearch}
+        continent={continent}
+        language={language}
+        currency={currency}
         setSearchParams={setSearchParams}
       />
 
@@ -182,12 +225,49 @@ const SortedCountries = ({
                   area={area}
                 />
               </Link>
-            ) : nameSearch ? (
+            ) : // Name search
+            nameSearch ? (
               <Link
                 to={`/country/${country.name.official}`}
                 key={index}
                 state={{
-                  from: `/countries/search?namesearch=${nameSearch}`,
+                  from: `/countries/search?namesearch=${nameSearch}&page=${page}`,
+                }}
+              >
+                <ThumbnailComponent
+                  index={index}
+                  country={country}
+                  page={page}
+                  name={name}
+                  pop={pop}
+                  area={area}
+                />
+              </Link>
+            ) : // Continent search
+            continent ? (
+              <Link
+                to={`/country/${country.name.official}`}
+                key={index}
+                state={{
+                  from: `/countries/search?cont=${continent}&page=${page}`,
+                }}
+              >
+                <ThumbnailComponent
+                  index={index}
+                  country={country}
+                  page={page}
+                  name={name}
+                  pop={pop}
+                  area={area}
+                />
+              </Link>
+            ) : // Language search
+            language ? (
+              <Link
+                to={`/country/${country.name.official}`}
+                key={index}
+                state={{
+                  from: `/countries/search?lang=${language}&page=${page}`,
                 }}
               >
                 <ThumbnailComponent
@@ -200,22 +280,25 @@ const SortedCountries = ({
                 />
               </Link>
             ) : (
-              <Link
-                to={`/country/${country.name.official}`}
-                key={index}
-                state={{
-                  from: `/countries/search?cont=${continent}`,
-                }}
-              >
-                <ThumbnailComponent
-                  index={index}
-                  country={country}
-                  page={page}
-                  name={name}
-                  pop={pop}
-                  area={area}
-                />
-              </Link>
+              // Currency search
+              currency && (
+                <Link
+                  to={`/country/${country.name.official}`}
+                  key={index}
+                  state={{
+                    from: `/countries/search?curr=${currency}&page=${page}`,
+                  }}
+                >
+                  <ThumbnailComponent
+                    index={index}
+                    country={country}
+                    page={page}
+                    name={name}
+                    pop={pop}
+                    area={area}
+                  />
+                </Link>
+              )
             )
           );
         })}

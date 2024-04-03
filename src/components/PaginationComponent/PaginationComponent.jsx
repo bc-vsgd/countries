@@ -7,6 +7,10 @@ const PaginationComponent = ({
   name,
   pop,
   area,
+  nameSearch,
+  continent,
+  language,
+  currency,
   setSearchParams,
 }) => {
   return (
@@ -31,6 +35,30 @@ const PaginationComponent = ({
             if (area) {
               setSearchParams({
                 area: area,
+                page: page - 1,
+              });
+            }
+            if (nameSearch) {
+              setSearchParams({
+                namesearch: nameSearch,
+                page: page - 1,
+              });
+            }
+            if (continent) {
+              setSearchParams({
+                cont: continent,
+                page: page - 1,
+              });
+            }
+            if (language) {
+              setSearchParams({
+                lang: language,
+                page: page - 1,
+              });
+            }
+            if (currency) {
+              setSearchParams({
+                curr: currency,
                 page: page - 1,
               });
             }
@@ -60,6 +88,30 @@ const PaginationComponent = ({
             if (area) {
               setSearchParams({
                 area: area,
+                page: page + 1,
+              });
+            }
+            if (nameSearch) {
+              setSearchParams({
+                namesearch: nameSearch,
+                page: page + 1,
+              });
+            }
+            if (continent) {
+              setSearchParams({
+                cont: continent,
+                page: page + 1,
+              });
+            }
+            if (language) {
+              setSearchParams({
+                lang: language,
+                page: page + 1,
+              });
+            }
+            if (currency) {
+              setSearchParams({
+                curr: currency,
                 page: page + 1,
               });
             }

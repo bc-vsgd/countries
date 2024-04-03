@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SearchComponent = ({
   setIsLoading,
-  option,
+  // option,
   setOption,
   setPage,
   setSearchParams,
@@ -16,19 +16,24 @@ const SearchComponent = ({
   setArea,
   // Search
   setNameSearch,
-  // Regions & subregions array
+  // Regions & subregions array, searched continent
   continents,
-  // Searched continent
   setContinent,
+  // Languages array, searched language
+  languages,
+  setLanguage,
+  // Currencies array, searched currency
+  currencies,
+  setCurrency,
 }) => {
   const navigate = useNavigate();
-  // console.log("option: ", option);
-  // console.log("search comp, continents array: ", continents);
 
   // States: name search
   const [nameValue, setNameValue] = useState("");
   // Continent search
   const [selectedCont, setSelectedCont] = useState("");
+
+  // ARRAYS FOR SELECTS
 
   // Array of select options for name, pop & area sort
   const selectOptions = [
@@ -76,7 +81,26 @@ const SearchComponent = ({
     }
   }
 
-  // Sort & search functions
+  // Language search: array for select
+  // console.log("search comp, languages array: ", languages);
+  const selectLanguages = [];
+  for (let i = 0; i < languages.length; i++) {
+    selectLanguages.push({
+      value: languages[i].lang,
+      label: languages[i].lang,
+    });
+  }
+
+  // Currency search: array for select
+  const selectCurrencies = [];
+  for (let i = 0; i < currencies.length; i++) {
+    selectCurrencies.push({
+      value: currencies[i].abbr,
+      label: currencies[i].name,
+    });
+  }
+
+  // SORT & SEARCH FUNCTIONS
 
   // Function: Name, population, area sort
   const handleSortSelect = (event) => {
@@ -93,6 +117,8 @@ const SearchComponent = ({
       setArea("");
       setNameSearch("");
       setContinent("");
+      setLanguage("");
+      setCurrency("");
 
       navigate(`/countries/sort?name=${arr[1]}`);
     }
@@ -104,6 +130,8 @@ const SearchComponent = ({
       setArea("");
       setNameSearch("");
       setContinent("");
+      setLanguage("");
+      setCurrency("");
 
       navigate(`/countries/sort?pop=${arr[1]}`);
     }
@@ -115,6 +143,8 @@ const SearchComponent = ({
       setPop("");
       setNameSearch("");
       setContinent("");
+      setLanguage("");
+      setCurrency("");
 
       navigate(`/countries/sort?area=${arr[1]}`);
     }
@@ -131,10 +161,13 @@ const SearchComponent = ({
     setPop("");
     setArea("");
     setContinent("");
+    setLanguage("");
+    setCurrency("");
 
     navigate(`/countries/search?namesearch=${nameValue}`);
   };
 
+  // Function: continent search
   const handleContinentSelect = (event) => {
     console.log(event.value);
     setIsLoading(true);
@@ -145,8 +178,42 @@ const SearchComponent = ({
     setPop("");
     setArea("");
     setNameSearch("");
+    setLanguage("");
+    setCurrency("");
 
     navigate(`/countries/search?cont=${event.value}`);
+  };
+
+  // Function: language search
+  const handleLanguageSelect = (event) => {
+    setIsLoading(true);
+    setPage(1);
+    setSearchParams({ lang: event.value });
+    setLanguage(event.value);
+    setName("");
+    setPop("");
+    setArea("");
+    setNameSearch("");
+    setContinent("");
+    setCurrency("");
+
+    navigate(`/countries/search?lang=${event.value}`);
+  };
+
+  // Function: currency search
+  const handleCurrencySelect = (event) => {
+    setIsLoading(true);
+    setPage(1);
+    setSearchParams({ curr: event.value });
+    setCurrency(event.value);
+    setName("");
+    setPop("");
+    setArea("");
+    setNameSearch("");
+    setContinent("");
+    setLanguage("");
+
+    navigate(`/countries/search?curr=${event.value}`);
   };
 
   return (
@@ -159,11 +226,11 @@ const SearchComponent = ({
           // value={option}
           options={selectOptions}
           onChange={handleSortSelect}
-          getOptionLabel={(e) => {
+          getOptionLabel={(event) => {
             return (
               <div className="flex-row">
-                <p>{e.label}</p>
-                <p>{e.icon}</p>
+                <p>{event.label}</p>
+                <p>{event.icon}</p>
               </div>
             );
           }}
@@ -188,8 +255,30 @@ const SearchComponent = ({
           placeholder="Search by continent"
           options={selectContinents}
           onChange={handleContinentSelect}
-          getOptionLabel={(e) => {
-            return <p>{e.label}</p>;
+          getOptionLabel={(event) => {
+            return <p>{event.label}</p>;
+          }}
+        />
+
+        {/* Search by language select */}
+        <Select
+          className="lang-search-select"
+          placeholder="Search by language"
+          options={selectLanguages}
+          onChange={handleLanguageSelect}
+          getOptionLabel={(event) => {
+            return <p>{event.label}</p>;
+          }}
+        />
+
+        {/* Search by currency select */}
+        <Select
+          className="curr-search-select"
+          placeholder="Search by currency"
+          options={selectCurrencies}
+          onChange={handleCurrencySelect}
+          getOptionLabel={(event) => {
+            return <p>{event.label}</p>;
           }}
         />
       </div>
