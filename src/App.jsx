@@ -31,7 +31,8 @@ library.add(
   faGithub
 );
 
-const countriesUrl = "http://localhost:3000";
+// const countriesUrl = "http://localhost:3000";
+const countriesUrl = "https://site--home--r6xgg7xm7vcz.code.run";
 
 function App() {
   const [isoCodes, setIsoCodes] = useState([]);
