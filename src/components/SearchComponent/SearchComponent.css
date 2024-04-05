@@ -1,18 +1,88 @@
+/* COMMON STYLE OR MORE THAN 992 PX WIDTH */
+
 .search-comp {
+  flex-wrap: wrap;
   padding: 20px 20px 30px 20px;
   border-bottom: 1px solid black;
+  justify-content: center;
   align-items: center;
   gap: 15px;
-}
-.search-comp .sort-select {
-  width: 300px;
-  padding: 5px;
-  font-size: 18px;
+  /* border: 1px solid blue; */
 }
 
-.search-comp .sort-select div {
-  gap: 10px;
+/* Form */
+.search-comp .name-search-form {
+  justify-content: space-between;
 }
-.search-comp p {
-  font-size: 18px;
+.search-comp .name-search-form input,
+.search-comp .name-search-form button {
+  height: 40px;
+  font-size: 16px;
+}
+.search-comp .name-search-form input {
+  padding-left: 10px;
+}
+.search-comp .name-search-form button {
+  width: 30%;
+  padding: 0;
+}
+.search-comp input {
+  width: 70%;
+}
+/*  */
+
+/* MORE THAN 992 PX WIDTH (SELECT) */
+@media (min-width: 992px) {
+  .search-comp > * {
+    width: 30%;
+  }
+}
+
+/* LESS THAN 992 PX WIDTH */
+@media (max-width: 992px) {
+  .search-comp {
+    padding: 20px;
+  }
+}
+
+/* BETWEEN 768 & 992 PX WIDTH (SELECT) */
+@media (min-width: 768px) and (max-width: 992px) {
+  /* Select & form */
+  .search-comp > *,
+  .search-comp .name-search-form {
+    width: 30%;
+  }
+}
+
+/* LESS THAN 768 PX WIDTH */
+@media (max-width: 768px) {
+  .search-comp {
+    padding: 10px;
+    gap: 10px;
+  }
+  .search-comp > * {
+    width: 48%;
+  }
+  .search-comp > *,
+  .search-comp .name-search-form input,
+  .search-comp .name-search-form button {
+    font-size: 15px;
+  }
+  .search-comp .name-search-form input {
+    width: 75%;
+  }
+  .search-comp .name-search-form button {
+    width: 25%;
+    padding: 0;
+    text-align: center;
+  }
+}
+
+/* LESS THAN 576 PX WIDTH */
+@media (max-width: 576px) {
+  .search-comp > *,
+  .search-comp .name-search-form input,
+  .search-comp .name-search-form button {
+    font-size: 14px;
+  }
 }

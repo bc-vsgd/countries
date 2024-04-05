@@ -8,7 +8,9 @@
 @import "./pages/CountryPage/CountryPage.css";
 @import "./components/Footer/Footer.css";
 
-body {
+body,
+button,
+input {
   font-family: "Open Sans", sans-serif;
 }
 .container {
@@ -26,4 +28,21 @@ a {
 .flex-col {
   display: flex;
   flex-direction: column;
+}
+
+/* CONTAINER */
+@media (max-width: 1200px) {
+  .container {
+    width: 980px;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
 }

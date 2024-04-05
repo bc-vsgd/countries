@@ -239,7 +239,7 @@ const SearchComponent = ({
       <div className="search-comp flex-row">
         {/* Sort select */}
         <Select
-          className="sort-select"
+          className="select sort-select"
           placeholder="Sort by name, population, area"
           options={selectOptions}
           onChange={handleSortSelect}
@@ -254,7 +254,7 @@ const SearchComponent = ({
         />
 
         {/* Search by name form */}
-        <form onSubmit={handleSubmit}>
+        <form className="name-search-form flex-row" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Search by name"
@@ -268,7 +268,7 @@ const SearchComponent = ({
 
         {/* Search by continent select */}
         <Select
-          className="cont-search-select"
+          className="select cont-search-select"
           placeholder="Search by continent"
           options={selectContinents}
           onChange={handleContinentSelect}
@@ -279,7 +279,7 @@ const SearchComponent = ({
 
         {/* Search by language select */}
         <Select
-          className="lang-search-select"
+          className="select lang-search-select"
           placeholder="Search by language"
           options={selectLanguages}
           onChange={handleLanguageSelect}
@@ -290,7 +290,7 @@ const SearchComponent = ({
 
         {/* Search by currency select */}
         <Select
-          className="curr-search-select"
+          className="select curr-search-select"
           placeholder="Search by currency"
           options={selectCurrencies}
           onChange={handleCurrencySelect}
