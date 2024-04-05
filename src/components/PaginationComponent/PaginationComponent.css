@@ -1,20 +1,61 @@
+/* COMMON STYLE RULES OR MORE THAN 992 PX WIDTH */
+
 .pagination-comp {
-  align-items: center;
+  align-items: center; /* Common */
   padding: 20px;
+  margin-bottom: 20px;
 }
 .pagination-comp > * {
-  width: 40px;
+  width: 50px;
 }
 .pagination-comp button {
-  background-color: white;
-  border: 1px solid black;
-  padding: 5px 0;
-  border-radius: 50%;
+  width: 100%; /* Common */
+  background-color: white; /* Common */
+  border: 1px solid black; /* Common */
+  border-radius: 50%; /* Common */
+  padding: 10px 0;
 }
 .pagination-comp .icon {
   font-size: 24px;
 }
 .pagination-comp p {
-  text-align: center;
+  text-align: center; /* Common */
   font-size: 22px;
+}
+
+/* LESS THAN 992 PX WIDTH */
+@media (max-width: 992px) {
+  .pagination-comp {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .pagination-comp button {
+    padding: 10px 0;
+  }
+  .pagination-comp .icon {
+    font-size: 20px;
+  }
+  .pagination-comp p {
+    font-size: 18px;
+  }
+}
+
+/* LESS THAN 768 PX WIDTH */
+@media (max-width: 768px) {
+  .pagination-comp {
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  .pagination-comp > * {
+    width: 35px;
+  }
+  .pagination-comp button {
+    padding: 6px 0;
+  }
+  .pagination-comp .icon {
+    font-size: 18px;
+  }
+  .pagination-comp p {
+    font-size: 16px;
+  }
 }

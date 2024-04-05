@@ -1,16 +1,16 @@
 /* COMMON STYLE OR MORE THAN 992 PX WIDTH */
 
 header {
-  align-items: center;
+  align-items: center; /* Common */
+  border-bottom: 1px solid grey; /* Common */
   padding: 30px 30px 40px 40px;
-  border-bottom: 1px solid grey;
   margin-bottom: 20px;
 }
 /* Button with icon */
 header button {
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 50%;
+  background-color: white; /* Common */
+  border: 1px solid black; /* Common */
+  border-radius: 50%; /* Common */
   padding: 10px;
   margin: 0 50px;
 }
@@ -19,8 +19,8 @@ header .icon {
 }
 /* Title div */
 header div:nth-of-type(2) {
-  width: 80%;
-  justify-content: center;
+  width: 80%; /* Common */
+  justify-content: center; /* Common */
   /* border: 1px solid blue; */
 }
 header div:nth-of-type(2) p {

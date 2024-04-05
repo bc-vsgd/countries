@@ -1,17 +1,43 @@
+/* COMMON STYLE RULES OR MORE THAN 992 PX WIDTH */
+
 /* Page title (h1) */
 .sorted-page h1 {
+  text-align: center; /* Common */
   font-size: 28px;
-  text-align: center;
   padding-top: 30px;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
+  /* border: 1px solid blue; */
 }
 .sorted-page h1 > span {
+  border-bottom: 1px solid black; /* Common */
   padding: 20px;
-  border-bottom: 1px solid black;
 }
 
 /* Thumbnails */
 .sorted-page .sorted-thumbnails {
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: center; /* Common */
+  flex-wrap: wrap; /* Common */
+}
+
+/* LESS THAN 992 PX WIDTH */
+@media (max-width: 992px) {
+  .sorted-page h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  .sorted-page h1 > span {
+    padding: 15px;
+  }
+}
+
+/* LESS THAN 768 PX WIDTH */
+@media (max-width: 768px) {
+  .sorted-page h1 {
+    font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+  .sorted-page h1 > span {
+    padding: 10px;
+  }
 }
