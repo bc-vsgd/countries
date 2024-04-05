@@ -1,4 +1,6 @@
-// Displays a country thumbnail with name & flag, & if sorted by population or area: number & pop / area, & if sorted by name: pop & area
+// Displays a country thumbnail with name & flag and:
+// - if sorted by population or area: pop or area number
+// - if sorted by name, name search, continent, language or currency: pop & area numbers
 
 // Population, area: add spaces between groups of 3 numbers
 const strWithSpaces = (initialStr) => {
@@ -31,7 +33,18 @@ const strWithSpaces = (initialStr) => {
   }
 };
 
-const ThumbnailComponent = ({ index, country, page, name, pop, area }) => {
+const ThumbnailComponent = ({
+  index,
+  country,
+  page,
+  name,
+  pop,
+  area,
+  nameSearch,
+  continent,
+  language,
+  currency,
+}) => {
   return (
     <div className="thumbnail flex-col">
       <h2>{country.name.common}</h2>
@@ -61,7 +74,7 @@ const ThumbnailComponent = ({ index, country, page, name, pop, area }) => {
         </div>
       )}
       {/* Name sort */}
-      {name && (
+      {(name || nameSearch || continent || language || currency) && (
         <div className="flex-col">
           <p className="flex-row">
             <span>

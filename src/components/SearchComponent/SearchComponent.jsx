@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SearchComponent = ({
   setIsLoading,
-  // option,
   setOption,
   setPage,
+  setPageTitle,
   setSearchParams,
   // Sort
   setName,
@@ -28,10 +28,8 @@ const SearchComponent = ({
 }) => {
   const navigate = useNavigate();
 
-  // States: name search
+  // STATES: name search
   const [nameValue, setNameValue] = useState("");
-  // Continent search
-  const [selectedCont, setSelectedCont] = useState("");
 
   // ARRAYS FOR SELECTS
 
@@ -104,13 +102,17 @@ const SearchComponent = ({
 
   // Function: Name, population, area sort
   const handleSortSelect = (event) => {
-    // console.log("value: ", event.value);
     setOption(event.value);
     setIsLoading(true);
     setPage(1);
     const arr = event.value.split("-");
     // Name sort
     if (arr[0] === "name") {
+      if (arr[1] === "asc") {
+        setPageTitle("Alphabetical order");
+      } else if (arr[1] === "desc") {
+        setPageTitle("Descending alphabetical order");
+      }
       setSearchParams({ name: arr[1] });
       setName(arr[1]);
       setPop("");
@@ -124,6 +126,11 @@ const SearchComponent = ({
     }
     // Pop sort
     if (arr[0] === "pop") {
+      if (arr[1] === "asc") {
+        setPageTitle("Population : ascending order");
+      } else if (arr[1] === "desc") {
+        setPageTitle("Population : descending order");
+      }
       setSearchParams({ pop: arr[1] });
       setPop(arr[1]);
       setName("");
@@ -137,6 +144,11 @@ const SearchComponent = ({
     }
     // Area sort
     if (arr[0] === "area") {
+      if (arr[1] === "asc") {
+        setPageTitle("Area : ascending order");
+      } else if (arr[1] === "desc") {
+        setPageTitle("Area : descending order");
+      }
       setSearchParams({ area: arr[1] });
       setArea(arr[1]);
       setName("");
@@ -153,6 +165,7 @@ const SearchComponent = ({
   // Function: Name search
   const handleSubmit = (event) => {
     event.preventDefault();
+    setPageTitle(`Search by name : '${nameValue}'`);
     setIsLoading(true);
     setPage(1);
     setSearchParams({ namesearch: nameValue });
@@ -170,6 +183,7 @@ const SearchComponent = ({
   // Function: continent search
   const handleContinentSelect = (event) => {
     console.log(event.value);
+    setPageTitle(event.value);
     setIsLoading(true);
     setPage(1);
     setSearchParams({ cont: event.value });
@@ -186,6 +200,7 @@ const SearchComponent = ({
 
   // Function: language search
   const handleLanguageSelect = (event) => {
+    setPageTitle(`Language : ${event.value}`);
     setIsLoading(true);
     setPage(1);
     setSearchParams({ lang: event.value });
@@ -202,6 +217,7 @@ const SearchComponent = ({
 
   // Function: currency search
   const handleCurrencySelect = (event) => {
+    setPageTitle(`Currency : ${event.label}`);
     setIsLoading(true);
     setPage(1);
     setSearchParams({ curr: event.value });
@@ -216,6 +232,8 @@ const SearchComponent = ({
     navigate(`/countries/search?curr=${event.value}`);
   };
 
+  // COMPONENT
+
   return (
     <>
       <div className="search-comp flex-row">
@@ -223,7 +241,6 @@ const SearchComponent = ({
         <Select
           className="sort-select"
           placeholder="Sort by name, population, area"
-          // value={option}
           options={selectOptions}
           onChange={handleSortSelect}
           getOptionLabel={(event) => {
