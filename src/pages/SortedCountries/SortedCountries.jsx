@@ -137,11 +137,6 @@ const SortedCountries = ({
         setCurrency={setCurrency}
       />
 
-      {/* Page title (h1) */}
-      <h1>
-        <span>{pageTitle}</span>
-      </h1>
-
       <PaginationComponent
         page={page}
         setPage={setPage}
@@ -154,6 +149,7 @@ const SortedCountries = ({
         language={language}
         currency={currency}
         setSearchParams={setSearchParams}
+        pageTitle={pageTitle}
       />
 
       {/* Countries thumbnails */}

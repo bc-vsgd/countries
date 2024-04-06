@@ -1,6 +1,10 @@
 /* COMMON STYLE OR MORE THAN 992 PX WIDTH */
 
 header {
+  position: sticky; /* Common */
+  top: 0; /* Common */
+  background-color: white; /* Common */
+  z-index: 1; /* Common */
   align-items: center; /* Common */
   border-bottom: 1px solid grey; /* Common */
   padding: 30px 30px 40px 40px;
@@ -20,7 +24,7 @@ header .icon {
 /* Title div */
 header div:nth-of-type(2) {
   width: 80%; /* Common */
-  justify-content: center; /* Common */
+  justify-content: center;
   /* border: 1px solid blue; */
 }
 header div:nth-of-type(2) p {
@@ -31,6 +35,27 @@ header div:nth-of-type(2) p {
 @media (max-width: 992px) {
   header {
     margin-bottom: 10px;
+  }
+}
+
+/* BETWEEN 768 & 992 PX WIDTH */
+@media (min-width: 768px) and (max-width: 992px) {
+  header {
+    padding: 30px 20px;
+  }
+  /* Icon */
+  header .icon {
+    font-size: 24px;
+  }
+  /* Title div */
+  header div:nth-of-type(2) {
+    /* border: 1px solid red; */
+    padding-left: 20%;
+    justify-content: left;
+  }
+
+  header div:nth-of-type(2) p {
+    font-size: 48px;
   }
 }
 
@@ -50,20 +75,5 @@ header div:nth-of-type(2) p {
   /* Title div */
   header div:nth-of-type(2) p {
     font-size: 40px;
-  }
-}
-
-/* BETWEEN 768 & 992 PX WIDTH */
-@media (min-width: 768px) and (max-width: 992px) {
-  header {
-    padding: 30px 20px;
-  }
-  /* Icon */
-  header .icon {
-    font-size: 24px;
-  }
-  /* Title div */
-  header div:nth-of-type(2) p {
-    font-size: 48px;
   }
 }
