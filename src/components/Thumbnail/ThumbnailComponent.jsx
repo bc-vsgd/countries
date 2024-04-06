@@ -2,6 +2,15 @@
 // - if sorted by population or area: pop or area number
 // - if sorted by name, name search, continent, language or currency: pop & area numbers
 
+// div (.thumbnail)
+// => h2
+// => img (.thumbnail-flag)
+// If area or pop sort:
+// => div
+// => => p
+// => => => span: Number
+// => => => <> span(s): Population / area : qtty
+
 // Population, area: add spaces between groups of 3 numbers
 const strWithSpaces = (initialStr) => {
   if (Number(initialStr) >= 3) {
@@ -84,7 +93,7 @@ const ThumbnailComponent = ({
           </p>
           <p className="flex-row">
             <span>Area : {strWithSpaces(country.area.toString())}</span>
-            <span>km2</span>
+            <span>km²</span>
           </p>
         </div>
       )}

@@ -7,9 +7,10 @@
   align-items: center; /* Common */
   padding: 20px 20px 30px 20px;
   gap: 15px;
-  /* border: 1px solid blue; */
 }
-
+.search-comp .sort-select div {
+  gap: 10px;
+}
 /* Form */
 .search-comp .name-search-form {
   justify-content: space-between; /* Common */

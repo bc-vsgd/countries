@@ -25,7 +25,6 @@ header .icon {
 header div:nth-of-type(2) {
   width: 80%; /* Common */
   justify-content: center;
-  /* border: 1px solid blue; */
 }
 header div:nth-of-type(2) p {
   font-size: 52px;
@@ -49,7 +48,6 @@ header div:nth-of-type(2) p {
   }
   /* Title div */
   header div:nth-of-type(2) {
-    /* border: 1px solid red; */
     padding-left: 20%;
     justify-content: left;
   }

@@ -1,26 +1,6 @@
 /* COMMON STYLE RULES OR MORE THAN 992 PX WIDTH */
 
 .pagination-comp {
-  /* border: 1px solid red; */
-}
-.pagination-comp .buttons-div {
-  /* border: 1px solid green; */
-}
-.pagination-comp .title-div {
-  /* border: 1px solid pink; */
-  /* padding-bottom: 20px; */
-  /* margin-bottom: 20px; */
-  /* align-items: center; */
-}
-.pagination-comp h1 {
-  /* border: 1px dotted green; */
-  /* align-items: center; */
-}
-.pagination-comp span {
-  /* border: 1px dotted blue; */
-}
-
-.pagination-comp {
   position: sticky; /* Common */
   background-color: white; /* Common */
   align-items: center; /* Common */
@@ -45,7 +25,6 @@
   text-align: center; /* Common */
   line-height: 42px;
   font-size: 22px;
-  /* border: 1px solid blue; */
 }
 
 /* Page title (h1) */
@@ -54,9 +33,9 @@
   padding-left: 25%;
 }
 .pagination-comp h1 {
-  font-size: 28px;
   padding-top: 15px; /* Common */
   padding-bottom: 20px; /* Common */
+  font-size: 28px;
 }
 .pagination-comp h1 > span {
   border-bottom: 1px solid grey; /* Common */

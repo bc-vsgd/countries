@@ -1,26 +1,69 @@
+/* COMMON STYLE OR MORE THAN 992 PX WIDTH */
+
 .thumbnail {
-  background-color: #fafafa;
-  width: 320px;
-  height: 250px;
-  /* border: 1px solid black; */
-  border-radius: 5px;
-  padding: 20px;
-  margin: 10px;
-  align-items: center;
-  gap: 20px;
+  align-items: center; /* Common */
+  background-color: #fafafa; /* Common */
+  border-bottom: 1px solid grey; /* Common */
+  border-left: 1px solid grey; /* Common */
+  border-radius: 5px; /* Common */
+  width: 330px;
+  padding: 25px 10px;
+  gap: 30px;
 }
 .thumbnail h2 {
-  font-size: 18px;
-  text-align: center;
+  text-align: center; /* Common */
+  font-weight: bold; /* Common */
+  font-size: 22px;
 }
 .thumbnail-flag {
-  width: 200px;
-  height: 100px;
-  object-fit: contain;
+  object-fit: contain; /* Common */
+  width: 240px;
+  height: 120px;
+}
+.thumbnail > div {
+  font-size: 19px;
 }
 .thumbnail > div:first-of-type {
-  gap: 10px;
+  gap: 10px; /* Common */
 }
 .thumbnail > div:first-of-type p {
-  gap: 5px;
+  gap: 5px; /* Common */
+}
+
+/* LESS THAN 992 PX WIDTH */
+@media (max-width: 992px) {
+  .thumbnail {
+    width: 315px;
+    padding: 20px 15px;
+    gap: 25px;
+  }
+  .thumbnail-flag {
+    width: 220px;
+    height: 110px;
+  }
+  .thumbnail h2 {
+    font-size: 20px;
+  }
+  .thumbnail > div {
+    font-size: 18px;
+  }
+}
+
+/* LESS THAN 768 PX WIDTH */
+@media (max-width: 768px) {
+  .thumbnail {
+    width: 300px;
+    padding: 15px 10px;
+    gap: 20px;
+  }
+  .thumbnail-flag {
+    width: 200px;
+    height: 100px;
+  }
+  .thumbnail h2 {
+    font-size: 18px;
+  }
+  .thumbnail > div {
+    font-size: 16px;
+  }
 }
