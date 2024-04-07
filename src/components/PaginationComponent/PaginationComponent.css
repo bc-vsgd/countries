@@ -1,5 +1,6 @@
-/* COMMON STYLE RULES OR MORE THAN 992 PX WIDTH */
+/* PAGINATION COMPONENT STYLE RULES */
 
+/* COMMON STYLE RULES OR MORE THAN 992 PX WIDTH */
 .pagination-comp {
   position: sticky; /* Common */
   background-color: white; /* Common */
@@ -38,12 +39,12 @@
   font-size: 28px;
 }
 .pagination-comp h1 > span {
+  font-weight: bold;
   border-bottom: 1px solid grey; /* Common */
   padding-bottom: 15px;
 }
 
 /* LESS THAN 992 PX WIDTH */
-
 @media (max-width: 992px) {
   .pagination-comp {
     top: 90px;
@@ -73,7 +74,6 @@
 }
 
 /* LESS THAN 768 PX WIDTH */
-
 @media (max-width: 768px) {
   .pagination-comp {
     top: 60px;

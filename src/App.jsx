@@ -31,7 +31,9 @@ library.add(
   faGithub
 );
 
+// Local server
 // const countriesUrl = "http://localhost:3000";
+// Remote server
 const countriesUrl = "https://site--home--r6xgg7xm7vcz.code.run";
 
 function App() {
@@ -64,7 +66,6 @@ function App() {
           element={
             <SortedCountries
               url={countriesUrl}
-              // isoCodes={isoCodes}
               option={option}
               setOption={setOption}
               continents={continents}
@@ -78,7 +79,6 @@ function App() {
           element={
             <SortedCountries
               url={countriesUrl}
-              // isoCodes={isoCodes}
               option={option}
               setOption={setOption}
               continents={continents}

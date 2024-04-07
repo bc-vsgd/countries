@@ -1,15 +1,9 @@
+// THUMBNAIL COMPONENT
 // Displays a country thumbnail with name & flag and:
 // - if sorted by population or area: pop or area number
 // - if sorted by name, name search, continent, language or currency: pop & area numbers
 
-// div (.thumbnail)
-// => h2
-// => img (.thumbnail-flag)
-// If area or pop sort:
-// => div
-// => => p
-// => => => span: Number
-// => => => <> span(s): Population / area : qtty
+// FUNCTION
 
 // Population, area: add spaces between groups of 3 numbers
 const strWithSpaces = (initialStr) => {
@@ -41,6 +35,8 @@ const strWithSpaces = (initialStr) => {
     return str;
   }
 };
+
+// COMPONENT
 
 const ThumbnailComponent = ({
   index,

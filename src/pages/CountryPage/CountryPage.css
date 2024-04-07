@@ -1,3 +1,5 @@
+/* COUNTRY PAGE STYLE RULES : COMMON STYLE OR MORE THAN 992 PX WIDTH */
+
 .country-page {
   gap: 20px;
   font-size: 18px;
@@ -10,7 +12,7 @@
   padding: 20px 0 0 0;
 }
 
-/* Head div: back button + country name */
+/* HEAD DIV : back button + country name */
 .country-page .head-div {
   position: sticky; /* Common */
   background-color: white; /* Common */
@@ -41,17 +43,18 @@
 }
 .country-page h1 {
   text-align: center; /* Common */
+  font-weight: bold; /* Common */
   font-size: 28px;
   padding: 10px 0 30px 0;
   gap: 20px;
 }
 
-/* Native name(s) */
+/* NATIVE NAME(S) DIV */
 .country-page .native-name-lang {
   width: 170px;
 }
 
-/* Info div: capital & its name, population & its number ... */
+/* INFO DIV : capital & its name, population & its number ... */
 .country-page .info-div {
   justify-content: center; /* Common */
   margin-bottom: 10px;
@@ -72,10 +75,10 @@ except the last title (ex: "Language", "Borders") of the parent div */
   width: 500px;
   padding: 10px 10px 20px 10px;
   /* If several elements */
-  gap: 5px;
+  gap: 5px; /* Common */
 }
 
-/* Flag div */
+/* FLAG DIV */
 .country-page .flag-div {
   background-color: #fafafa; /* Common */
   padding-bottom: 30px;
@@ -96,7 +99,7 @@ except the last title (ex: "Language", "Borders") of the parent div */
   line-height: 24px;
 }
 
-/* Coat of arms div */
+/* COAT OF ARMS DIV */
 .country-page .coat-of-arms {
   object-fit: contain; /* Common */
   margin: 0 auto;

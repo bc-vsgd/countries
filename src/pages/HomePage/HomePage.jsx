@@ -1,4 +1,5 @@
-// Home page: automatically navigates to Sorted Countries Page (sorted by ascending name)
+// HOME PAGE: returns data from API to App.jsx (+ ISO codes, continents, currencies & languages arrays), then automatically navigates to Sorted Countries Page (sorted by ascending name)
+
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";

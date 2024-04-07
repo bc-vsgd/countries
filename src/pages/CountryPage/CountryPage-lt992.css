@@ -1,77 +1,70 @@
-/* COUNTRY PAGE STYLE RULES : STYLE RULES FOR LESS THAN 768 PX WIDTH */
+/* COUNTRY PAGE STYLE RULES: STYLE RULES FOR LESS THAN 992 PX WIDTH (& POSSIBLY MORE THAN 768 PX) */
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .country-page {
-    font-size: 16px;
-    gap: 10px;
+    font-size: 18px;
+    gap: 20px;
   }
+
   /* Direct children of country page, except the first one (.head-div) */
   .country-page > *:not(.head-div) {
-    padding: 10px 0;
+    padding: 10px 0 0 0;
   }
 
   /* HEAD DIV : back button + country name */
   .country-page .head-div {
-    top: 50px;
-    padding: 10px 0 0 0;
+    top: 85px;
+    padding: 20px 0 5px 0;
   }
   /* Back button */
   .country-page .back-btn-div {
     width: 60px;
-    gap: 5px;
-    align-items: center;
+    margin-left: 30px;
   }
   .country-page button {
-    padding: 6px 10px;
+    padding: 12px 18px;
   }
   .country-page .icon {
-    font-size: 18px;
+    font-size: 20px;
   }
   /* Country name */
   .country-page h1 {
-    font-size: 20px;
+    font-size: 24px;
     padding: 10px 0 30px 0;
     gap: 20px;
   }
   .country-page .head-div > div:nth-of-type(2) p:nth-of-type(2) {
-    font-size: 18px;
-  }
-
-  /* NATIVE NAME(S) DIV */
-  .country-page .native-name-lang {
-    width: 120px;
+    font-size: 22px;
   }
 
   /* INFO DIV : capital & its name, population & its number ... */
-  .country-page .info-div {
-    margin-bottom: 0;
-  }
   /* Title: capital, population, ... */
   .country-page .info-div > div:first-of-type {
     width: 180px;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 10px 15px 10px;
   }
   /* Content: capital name, languages names, ... */
   .country-page .info-div > div:nth-of-type(2) {
-    padding: 10px 10px 10px 10px;
+    padding: 10px 10px 15px 10px;
   }
 
-  /* Flag div */
+  /* FLAG DIV */
   .country-page .flag-div > div:first-of-type {
     padding: 20px 20px 30px 20px;
   }
   .country-page .flag-div img {
-    width: 300px;
+    width: 350px;
   }
   .country-page .flag-div > div:nth-of-type(2) {
     width: 90%;
-    line-height: 20px;
-    padding-bottom: 10px;
+    line-height: 22px;
+    padding-bottom: 20px;
   }
 
   /* COAT OF ARMS DIV */
   .country-page .coat-of-arms {
-    width: 200px;
-    height: 200px;
+    margin-left: 15%;
+    width: 220px;
+    height: 220px;
   }
 }

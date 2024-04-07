@@ -1,18 +1,31 @@
+/* LOADER STYLE RULES */
+
 .loader-div {
+  margin: 0 auto; /* Common */
+  justify-content: center; /* Common */
+  align-items: center; /* Common */
   width: 1000px;
   height: 500px;
-  margin: 100px auto;
-  justify-content: center;
-  align-items: center;
 }
 .loader-div > div {
+  justify-content: center; /* Common */
+  align-items: center; /* Common */
   width: 500px;
   height: 300px;
-  justify-content: center;
-  align-items: center;
 }
 .loader-div img {
+  object-fit: contain; /* Common */
   width: 500px;
   height: 300px;
-  object-fit: contain;
+}
+
+@media (max-width: 992px) {
+  .loader-div {
+    width: 700px;
+  }
+}
+@media (max-width: 768px) {
+  .loader-div {
+    width: 500px;
+  }
 }

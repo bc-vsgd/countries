@@ -1,4 +1,4 @@
-// UNFORTUNATELY UNUSED
+// FUNCTION: returns an array of sorted objects containing regions and subregions:  [{region: "Europe"}, {subregion: "Northern Europe"}, {subregion: "Eastern Europe"}, ... , {region: "Asia"}, ... ]
 
 const getContinentsArray = (cont) => {
   // cont: array of objects containing each: key region, key subregion

@@ -1,12 +1,13 @@
-/* COMMON STYLE OR MORE THAN 992 PX WIDTH */
+/* HEADER STYLE RULES */
 
+/* COMMON STYLE OR MORE THAN 992 PX WIDTH */
 header {
   position: sticky; /* Common */
-  top: -15px;
   background-color: white; /* Common */
   z-index: 1; /* Common */
   align-items: center; /* Common */
   border-bottom: 1px solid grey; /* Common */
+  top: -15px; /* Sticky position */
   padding: 30px 30px 40px 40px;
   margin-bottom: 20px;
 }
@@ -51,7 +52,6 @@ header div:nth-of-type(2) p {
     padding-left: 20%;
     justify-content: left;
   }
-
   header div:nth-of-type(2) p {
     font-size: 48px;
   }

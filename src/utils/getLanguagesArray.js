@@ -1,4 +1,4 @@
-// UNFORTUNATELY UNUSED
+// FUNCTION: returns an array of objects with languages informations: [{abbr: 'afr', lang: 'Afrikaans'}, {abbr: 'sqi', lang: 'Albanian'}, ...]
 
 const getLanguagesArray = (lang) => {
   // 'lang': array of objects, each: {languages: {ell: 'Greek', tur: 'Turkish'}}

@@ -1,3 +1,5 @@
+// COUNTRY PAGE: displays all informations about one country
+
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -5,6 +7,8 @@ import axios from "axios";
 import Loading from "../../components/Loader/Loader";
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+// FUNCTIONS
 
 // Returns an array: ["deu", "German", "Bundesrepublik Deutschland"]
 const languagesArray = (lang, name) => {
@@ -63,6 +67,8 @@ const bordersArray = (borders, isoCodes) => {
   }
   return bordersArray;
 };
+
+// COMPONENT
 
 const CountryPage = ({ url, isoCodes }) => {
   const { name } = useParams();
@@ -132,7 +138,6 @@ const CountryPage = ({ url, isoCodes }) => {
           >
             <FontAwesomeIcon icon="fa-solid fa-angle-left" className="icon" />
           </button>
-          {/* <p>Back</p> */}
         </div>
         {/* Name */}
         <div className="flex-col">

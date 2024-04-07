@@ -1,3 +1,5 @@
+// SEARCH COMPONENT: sort select (name, population, area) + search by name form + 3 selects (continent, language, currency search)
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";

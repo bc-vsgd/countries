@@ -1,8 +1,9 @@
-/* COMMON STYLE OR MORE THAN 992 PX WIDTH */
+/* SEARCH COMPONENT STYLE RULES */
 
+/* COMMON STYLE OR MORE THAN 992 PX WIDTH */
 .search-comp {
   flex-wrap: wrap; /* Common */
-  border-bottom: 1px solid black; /* Common */
+  border-bottom: 1px solid grey; /* Common */
   justify-content: center; /* Common */
   align-items: center; /* Common */
   padding: 20px 20px 30px 20px;

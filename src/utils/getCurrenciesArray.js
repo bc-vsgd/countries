@@ -1,4 +1,4 @@
-// UNFORTUNATELY UNUSED
+// FUNCTION: returns an array containing objects with currencies informations: [{abbr: "EUR", name: "Euro", symbol: "..."}, {...}, ...]
 
 const getCurrenciesArray = (curr) => {
   //   arg: 'curr': array containing objects: {currencies: {CKD: {name: "Cook Islands dollar", symbol: "..."}} {NZD: {name: "...", symbol: "..."}}}

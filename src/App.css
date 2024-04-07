@@ -1,3 +1,5 @@
+/* STYLE RULES */
+
 @import "./reset.css";
 @import "./components/Header/Header.css";
 @import "./components/Loader/Loader.css";
@@ -6,9 +8,11 @@
 @import "./components/PaginationComponent/PaginationComponent.css";
 @import "./components/Thumbnail/ThumbnailComponent.css";
 @import "./pages/CountryPage/CountryPage.css";
+@import "./pages/CountryPage/CountryPage-lt992.css";
 @import "./pages/CountryPage/CountryPage-lt768.css";
 @import "./components/Footer/Footer.css";
 
+/* COMMON STYLE RULES */
 body,
 button,
 input {

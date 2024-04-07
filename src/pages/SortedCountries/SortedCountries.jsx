@@ -1,3 +1,6 @@
+// SORTED COUNTRIES PAGE: main page, displays countries according to sort or search (default: alphabetical display)
+// Contains: Search component + pagination component + list of links, each containing a thumbnail and leading to country page
+
 import { useState, useEffect } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import axios from "axios";

@@ -1,3 +1,5 @@
+// PAGINATION COMPONENT: pagination buttons ("<"" & ">"") + page title (h1)
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const PaginationComponent = ({
@@ -147,7 +149,6 @@ const PaginationComponent = ({
         </h1>
       </div>
     </div>
-    // </div>
   );
 };
 
