@@ -1,0 +1,83 @@
+@media (max-width: 768px) {
+  .country-page {
+    font-size: 16px;
+    gap: 10px;
+  }
+  /* Direct children of country page, except the first one (.head-div) */
+  .country-page > *:not(.head-div) {
+    padding: 10px 0;
+  }
+
+  /* HEAD DIV : back button + country name */
+  .country-page .head-div {
+    top: 50px;
+    padding: 10px 0 0 0;
+  }
+  /* Back button */
+  .country-page .back-btn-div {
+    width: 60px;
+    gap: 5px;
+    align-items: center;
+  }
+  .country-page button {
+    padding: 6px 10px;
+  }
+  .country-page .icon {
+    font-size: 18px;
+  }
+  .country-page .back-btn-div p {
+    padding-top: 7px;
+  }
+  /* Country name */
+  .country-page h1 {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0 30px 0;
+    gap: 20px;
+  }
+  .country-page .head-div > div:nth-of-type(2) p:nth-of-type(2) {
+    font-size: 18px;
+  }
+
+  /* Native name(s) */
+  .country-page .native-name-lang {
+    width: 120px;
+  }
+
+  /* INFO DIV : capital & its name, population & its number ... */
+  .country-page .info-div {
+    margin-bottom: 0;
+  }
+  /* Title: capital, population, ... */
+  .country-page .info-div > div:first-of-type {
+    width: 180px;
+    padding: 10px 10px 10px 10px;
+  }
+  /* Content: capital name, languages names, ... */
+  .country-page .info-div > div:nth-of-type(2) {
+    /* width: 500px; */
+    padding: 10px 10px 10px 10px;
+    /* If several elements */
+    gap: 5px;
+  }
+
+  /* Flag div */
+  .country-page .flag-div > div:first-of-type {
+    padding: 20px 20px 30px 20px;
+  }
+  .country-page .flag-div img {
+    width: 300px;
+  }
+  .country-page .flag-div > div:nth-of-type(2) {
+    width: 90%;
+    line-height: 20px;
+    padding-bottom: 10px;
+  }
+
+  /* Coat of arms div */
+  .country-page .coat-of-arms {
+    margin-left: 15%;
+    width: 200px;
+    height: 200px;
+  }
+}

@@ -2,45 +2,48 @@
   gap: 20px;
   font-size: 18px;
 }
-.country-page > * {
-  border-left: 1px dotted grey;
-  border-bottom: 1px dotted grey;
-  background-color: #fafafa;
-  border-radius: 10px;
+/* Direct children of country page, except the first one (.head-div) */
+.country-page > *:not(.head-div) {
+  border-left: 1px solid grey; /* Common */
+  border-bottom: 1px solid grey; /* Common */
+  border-radius: 10px; /* Common */
   padding: 20px 0 0 0;
 }
-.country-page .back-btn-div {
-  background-color: white;
-  border: none;
-}
 
+/* Head div: back button + country name */
+.country-page .head-div {
+  position: sticky; /* Common */
+  background-color: white; /* Common */
+  border-bottom: 1px solid grey; /* Common */
+  top: 90px;
+  padding: 20px 0 10px 0;
+}
 /* Back button */
 .country-page .back-btn-div {
-  align-items: center;
-  justify-content: space-between;
-  width: 100px;
+  align-items: center; /* Common */
+  justify-content: space-between; /* Common */
+  width: 120px;
+  padding: 0 10px;
 }
 .country-page button {
-  background-color: white;
-  border: 1px solid black;
-  justify-content: space-between;
-  align-items: center;
+  background-color: white; /* Common */
+  border: 1px solid black; /* Common */
+  border-radius: 50%; /* Common */
   padding: 10px 15px;
-  border-radius: 50%;
   font-size: 16px;
 }
 .country-page .icon {
   font-size: 24px;
 }
-
-/* H1 */
+/* Country name */
+.country-page .head-div > div:nth-of-type(2) {
+  flex: 1; /* Common */
+}
 .country-page h1 {
+  text-align: center; /* Common */
   font-size: 28px;
-  text-align: center;
-  padding: 20px 0 30px 0;
-  margin-bottom: 30px;
+  padding: 10px 0 30px 0;
   gap: 20px;
-  border-bottom: 1px solid grey;
 }
 
 /* Native name(s) */
@@ -50,7 +53,7 @@
 
 /* Info div: capital & its name, population & its number ... */
 .country-page .info-div {
-  justify-content: center;
+  justify-content: center; /* Common */
   margin-bottom: 10px;
   gap: 10px;
 }
@@ -62,7 +65,7 @@
 /* Each .info-div title (ex: "Capital", "Population") is bottom bordered,
 except the last title (ex: "Language", "Borders") of the parent div */
 .country-page div > .info-div:not(:last-child) > div:first-of-type {
-  border-bottom: 1px solid grey;
+  border-bottom: 1px dotted grey; /* Common */
 }
 /* Content: capital name, languages names, ... */
 .country-page .info-div > div:nth-of-type(2) {
@@ -74,32 +77,29 @@ except the last title (ex: "Language", "Borders") of the parent div */
 
 /* Flag div */
 .country-page .flag-div {
+  background-color: #fafafa; /* Common */
   padding-bottom: 30px;
 }
 .country-page .flag-div > div:first-of-type {
-  margin: 0 auto;
+  margin: 0 auto; /* Common */
   padding: 40px;
 }
 .country-page .flag-div img {
+  object-fit: contain; /* Common */
+  border: 1px solid #e9ecf0; /* Common */
   width: 400px;
-  object-fit: contain;
-  border: 1px solid #e9ecf0;
 }
 .country-page .flag-div > div:nth-of-type(2) {
+  margin: 0 auto; /* Common */
+  text-align: center; /* Common */
   width: 900px;
-  margin: 0 auto;
   line-height: 24px;
-  text-align: center;
 }
 
 /* Coat of arms div */
-/* .country-page .arms-div img { */
-.country-page .arms-div > div:nth-of-type(2) {
-  border: 1px solid black;
-}
 .country-page .coat-of-arms {
+  object-fit: contain; /* Common */
+  margin: 0 auto;
   width: 200px;
   height: 200px;
-  object-fit: contain;
-  border: 1px solid blue;
 }

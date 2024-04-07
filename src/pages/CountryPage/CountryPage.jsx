@@ -116,29 +116,35 @@ const CountryPage = ({ url, isoCodes }) => {
     <Loading />
   ) : (
     <div className="country-page container flex-col">
-      {/* Back to previous page */}
-      <div className="back-btn-div flex-row">
-        <button
-          className="flex-row"
-          onClick={() => {
-            if (location.state) {
-              navigate(location.state.from);
-            } else {
-              navigate("/");
-            }
-          }}
-        >
-          <FontAwesomeIcon icon="fa-solid fa-angle-left" className="icon" />
-        </button>
-        <p>Back</p>
+      {/* Head div: back button + Country name */}
+      <div className="head-div flex-row">
+        {/* Back to previous page */}
+        <div className="back-btn-div flex-row">
+          <button
+            className="flex-row"
+            onClick={() => {
+              if (location.state) {
+                navigate(location.state.from);
+              } else {
+                navigate("/");
+              }
+            }}
+          >
+            <FontAwesomeIcon icon="fa-solid fa-angle-left" className="icon" />
+          </button>
+          {/* <p>Back</p> */}
+        </div>
+        {/* Name */}
+        <div className="flex-col">
+          <h1 className="flex-col">
+            <p>{data.name.common}</p>
+            <p>({data.name.official})</p>
+          </h1>
+        </div>
       </div>
-      {/* Name */}
+
+      {/* If native name */}
       <div className="flex-col">
-        <h1 className="flex-col">
-          <p>{data.name.common}</p>
-          <p>({data.name.official})</p>
-        </h1>
-        {/* If native name */}
         {data.name.nativeName && (
           <div className="info-div flex-row">
             <div>
@@ -273,7 +279,7 @@ const CountryPage = ({ url, isoCodes }) => {
             <div>
               <img
                 src={data.coatOfArms.svg}
-                className="coat-of-arms"
+                className="coat-of-arms flex-row"
                 alt="Coat of arms"
               />
             </div>

@@ -2,7 +2,7 @@
 
 header {
   position: sticky; /* Common */
-  top: 0; /* Common */
+  top: -15px;
   background-color: white; /* Common */
   z-index: 1; /* Common */
   align-items: center; /* Common */
@@ -60,6 +60,7 @@ header div:nth-of-type(2) p {
 /* LESS THAN 768 PX WIDTH */
 @media (max-width: 768px) {
   header {
+    top: -10px;
     padding: 15px;
   }
   /* Button with icon */
