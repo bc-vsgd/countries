@@ -9,7 +9,7 @@
   padding: 20px 20px 30px 20px;
   gap: 15px;
 }
-.search-comp .sort-select div {
+.search-comp .search-comp .sort-select div {
   gap: 10px;
 }
 /* Form */
@@ -20,19 +20,26 @@
 .search-comp .name-search-form button {
   height: 40px; /* Common */
   font-size: 16px;
+  color: #807f7f;
+  border: 1px solid #b3b3b3;
+  border-radius: 5px; /* Common */
 }
 .search-comp .name-search-form input {
   padding-left: 10px; /* Common */
 }
 .search-comp .name-search-form button {
   background-color: white; /* Common */
-  border: 1px solid black; /* Common */
-  border-radius: 5px; /* Common */
   padding: 0; /* Common */
   width: 30%;
 }
 .search-comp input {
   width: 70%;
+}
+/* Hover */
+.search-comp .name-search-form button:hover {
+  background-color: #807f7f;
+  border: #807f7f;
+  color: white;
 }
 /*  */
 

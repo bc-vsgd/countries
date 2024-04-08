@@ -4,6 +4,7 @@
 .pagination-comp {
   position: sticky; /* Common */
   background-color: white; /* Common */
+  opacity: 1;
   align-items: center; /* Common */
   top: 100px;
   padding: 20px;

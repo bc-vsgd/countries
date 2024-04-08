@@ -8,6 +8,7 @@
   border-left: 1px solid grey; /* Common */
   border-radius: 5px; /* Common */
   width: 330px;
+  min-height: 300px;
   padding: 25px 10px;
   gap: 30px;
 }
@@ -18,7 +19,7 @@
 }
 .thumbnail-flag {
   object-fit: contain; /* Common */
-  height: 120px;
+  width: 170px;
   border: 1px solid #e9ecf0;
 }
 .thumbnail > div {
@@ -30,17 +31,21 @@
 .thumbnail > div:first-of-type p {
   gap: 5px; /* Common */
 }
+/* Hover */
+.thumbnail-flag:hover {
+  opacity: 0.6;
+}
 
 /* LESS THAN 992 PX WIDTH */
 @media (max-width: 992px) {
   .thumbnail {
     width: 315px;
+    min-height: 270px;
     padding: 20px 15px;
     gap: 25px;
   }
   .thumbnail-flag {
-    width: 220px;
-    height: 110px;
+    width: 150px;
   }
   .thumbnail h2 {
     font-size: 20px;
@@ -54,12 +59,12 @@
 @media (max-width: 768px) {
   .thumbnail {
     width: 300px;
+    min-height: 250px;
     padding: 15px 10px;
     gap: 20px;
   }
   .thumbnail-flag {
-    width: 200px;
-    height: 100px;
+    width: 130px;
   }
   .thumbnail h2 {
     font-size: 18px;

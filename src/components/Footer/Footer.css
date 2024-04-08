@@ -26,7 +26,10 @@ footer .icon {
 footer .fa-linkedin {
   color: #0b65c2;
 }
-
+/* Hover */
+footer .icon:hover {
+  opacity: 0.6;
+}
 /* LESS THAN 992 PX WIDTH */
 @media (max-width: 992px) {
   footer {

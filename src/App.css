@@ -35,6 +35,11 @@ a {
   flex-direction: column;
 }
 
+button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
 /* CONTAINER */
 @media (max-width: 1200px) {
   .container {
