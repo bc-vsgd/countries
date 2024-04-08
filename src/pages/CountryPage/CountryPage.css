@@ -103,6 +103,6 @@ except the last title (ex: "Language", "Borders") of the parent div */
 .country-page .coat-of-arms {
   object-fit: contain; /* Common */
   margin: 0 auto;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
 }

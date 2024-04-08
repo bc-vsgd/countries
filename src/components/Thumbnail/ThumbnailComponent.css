@@ -59,7 +59,7 @@
 @media (max-width: 768px) {
   .thumbnail {
     width: 300px;
-    min-height: 250px;
+    min-height: 230px;
     padding: 15px 10px;
     gap: 20px;
   }
