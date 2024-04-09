@@ -90,12 +90,20 @@
   }
 }
 
+/* Change for mobile */
+
 /* LESS THAN 576 PX WIDTH */
 @media (max-width: 576px) {
+  .search-comp {
+    gap: 5px;
+  }
+  .search-comp > *,
+  .search-comp .name-search-form {
+    width: 40%;
+  }
   .search-comp > *,
   .search-comp .name-search-form input,
   .search-comp .name-search-form button {
-    /* Change for mobile */
     font-size: 12px;
   }
 }
