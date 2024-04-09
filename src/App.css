@@ -10,6 +10,7 @@
 @import "./pages/CountryPage/CountryPage.css";
 @import "./pages/CountryPage/CountryPage-lt992.css";
 @import "./pages/CountryPage/CountryPage-lt768.css";
+@import "./pages/CountryPage/CountryPage-lt576.css";
 @import "./components/Footer/Footer.css";
 
 /* COMMON STYLE RULES */

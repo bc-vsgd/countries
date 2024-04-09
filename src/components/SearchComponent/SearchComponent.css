@@ -90,8 +90,6 @@
   }
 }
 
-/* Change for mobile */
-
 /* LESS THAN 576 PX WIDTH */
 @media (max-width: 576px) {
   .search-comp {
@@ -104,6 +102,6 @@
   .search-comp > *,
   .search-comp .name-search-form input,
   .search-comp .name-search-form button {
-    font-size: 12px;
+    font-size: 10px;
   }
 }

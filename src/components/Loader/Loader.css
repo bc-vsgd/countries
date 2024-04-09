@@ -24,12 +24,13 @@
     width: 700px;
   }
 }
+
 @media (max-width: 768px) {
   .loader-div {
     width: 500px;
   }
 }
-/* Change for mobile */
+
 @media (max-width: 576px) {
   .loader-div {
     width: 350px;

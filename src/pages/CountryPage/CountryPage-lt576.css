@@ -1,0 +1,8 @@
+/* COUNTRY PAGE STYLE RULES : STYLE RULES FOR LESS THAN 576 PX WIDTH */
+
+@media (max-width: 576px) {
+  /* COAT OF ARMS DIV */
+  .country-page .coat-of-arms {
+    margin-left: 0;
+  }
+}
