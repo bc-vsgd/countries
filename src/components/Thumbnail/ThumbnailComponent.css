@@ -2,6 +2,7 @@
 
 /* COMMON STYLE OR MORE THAN 992 PX WIDTH */
 .thumbnail {
+  justify-content: space-between;
   align-items: center; /* Common */
   background-color: #fafafa; /* Common */
   border-bottom: 1px solid grey; /* Common */
@@ -10,7 +11,6 @@
   width: 330px;
   min-height: 300px;
   padding: 25px 10px;
-  gap: 30px;
 }
 .thumbnail h2 {
   text-align: center; /* Common */

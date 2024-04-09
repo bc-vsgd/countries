@@ -56,3 +56,8 @@ button:hover {
     width: 95%;
   }
 }
+@media (max-width: 576px) {
+  .container {
+    width: 400px;
+  }
+}

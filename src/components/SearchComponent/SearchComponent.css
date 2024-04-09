@@ -95,6 +95,7 @@
   .search-comp > *,
   .search-comp .name-search-form input,
   .search-comp .name-search-form button {
-    font-size: 14px;
+    /* Change for mobile */
+    font-size: 12px;
   }
 }

@@ -63,7 +63,7 @@ const ThumbnailComponent = ({
             {pop && (
               <>
                 <span>
-                  Population : {strWithSpaces(country.population.toString())}
+                  Pop : {strWithSpaces(country.population.toString())}
                 </span>
                 <span>inhab.</span>
               </>

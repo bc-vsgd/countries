@@ -29,3 +29,9 @@
     width: 500px;
   }
 }
+/* Change for mobile */
+@media (max-width: 576px) {
+  .loader-div {
+    width: 350px;
+  }
+}
