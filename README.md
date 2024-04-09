@@ -1,9 +1,31 @@
-# React + Vite
+# Countries app: an application to know the countries
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
 
-Currently, two official plugins are available:
+This application allows to display the world's countries by sorting them by :
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# countries
+- Alphabetical order (ascending and descending)
+- Population (increasing and decreasing)
+- Area (increasing and decreasing)
+- Language
+- Continent and subregion
+- Currency
+- By search by name
+
+The results are displayed by page of 20.
+
+By clicking on a country's thumbnail, you get its detailed information.
+
+## Development details
+
+This application is built with [React](https://react.dev/) JavaScript library.
+
+It is built using [REST Countries API](https://restcountries.com/).
+
+This is a fullstack application : the backend is hosted on [Northflank](https://northflank.com/), the frontend on [Netlify](https://www.netlify.com/).
+
+The layout is responsive, with breakpoints at 768 and 992 pixels.
+
+## Try it yourself
+
+Try it yourself by [clicking here](https://strong-churros-e75113.netlify.app) !!!
