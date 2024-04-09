@@ -8,7 +8,7 @@ const Footer = () => {
           <span>
             Made by <b>Benoît Charles</b>
           </span>
-          <a href="https://github.com/bc-vsgd" target="_blank">
+          <a href="https://github.com/bc-vsgd/countries" target="_blank">
             <FontAwesomeIcon icon="fa-brands fa-github" className="icon" />
           </a>
           <a
