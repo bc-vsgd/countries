@@ -19,8 +19,11 @@ By clicking on a country's thumbnail, you get its detailed information.
 
 This application is built with [React](https://react.dev/) JavaScript library.  
 It is built using [REST Countries API](https://restcountries.com/).  
-This is a fullstack application : the backend is hosted on [Northflank](https://northflank.com/), the frontend on [Netlify](https://www.netlify.com/).  
-The layout is responsive, with breakpoints at 576, 768 and 992 pixels.
+This is a fullstack application :
+
+- Backend hosted on [Northflank](https://northflank.com/) (code on [GitHub](https://github.com/bc-vsgd/my-site-back))
+- Frontend hosted on [Netlify](https://www.netlify.com/).  
+  The layout is responsive, with breakpoints at 576, 768 and 992 pixels.
 
 ## Try it yourself
 
