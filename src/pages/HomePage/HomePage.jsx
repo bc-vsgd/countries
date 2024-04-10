@@ -12,6 +12,7 @@ import getLanguagesArray from "../../utils/getLanguagesArray";
 
 const HomePage = ({
   url,
+  setPageTitle,
   setIsoCodes,
   setContinents,
   setCurrencies,
@@ -23,7 +24,8 @@ const HomePage = ({
     const fetchData = async () => {
       try {
         const { data } = (await axios.get(`${url}/countries`)).data;
-        // console.log("home, data: ", data);
+        // Page title
+        setPageTitle("Alphabetical order");
         // Get & set ISO codes
         const isoCodes = [];
         for (let i = 0; i < data.length; i++) {

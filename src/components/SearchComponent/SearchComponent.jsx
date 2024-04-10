@@ -129,9 +129,9 @@ const SearchComponent = ({
     // Pop sort
     if (arr[0] === "pop") {
       if (arr[1] === "asc") {
-        setPageTitle("Population : ascending order");
+        setPageTitle("Population : increasing order");
       } else if (arr[1] === "desc") {
-        setPageTitle("Population : descending order");
+        setPageTitle("Population : decreasing order");
       }
       setSearchParams({ pop: arr[1] });
       setPop(arr[1]);
@@ -147,9 +147,9 @@ const SearchComponent = ({
     // Area sort
     if (arr[0] === "area") {
       if (arr[1] === "asc") {
-        setPageTitle("Area : ascending order");
+        setPageTitle("Area : increasing order");
       } else if (arr[1] === "desc") {
-        setPageTitle("Area : descending order");
+        setPageTitle("Area : decreasing order");
       }
       setSearchParams({ area: arr[1] });
       setArea(arr[1]);

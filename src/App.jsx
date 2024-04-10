@@ -39,10 +39,12 @@ const countriesUrl = "https://site--home--r6xgg7xm7vcz.code.run";
 function App() {
   const [isoCodes, setIsoCodes] = useState([]);
   // Sort option
+  const [pageTitle, setPageTitle] = useState("");
   const [option, setOption] = useState("name-asc");
   const [continents, setContinents] = useState([]);
   const [currencies, setCurrencies] = useState([]);
   const [languages, setLanguages] = useState([]);
+
   return (
     <Router>
       <Header />
@@ -53,6 +55,7 @@ function App() {
           element={
             <HomePage
               url={countriesUrl}
+              setPageTitle={setPageTitle}
               setIsoCodes={setIsoCodes}
               setContinents={setContinents}
               setCurrencies={setCurrencies}
@@ -66,6 +69,8 @@ function App() {
           element={
             <SortedCountries
               url={countriesUrl}
+              pageTitle={pageTitle}
+              setPageTitle={setPageTitle}
               option={option}
               setOption={setOption}
               continents={continents}
@@ -79,6 +84,8 @@ function App() {
           element={
             <SortedCountries
               url={countriesUrl}
+              pageTitle={pageTitle}
+              setPageTitle={setPageTitle}
               option={option}
               setOption={setOption}
               continents={continents}

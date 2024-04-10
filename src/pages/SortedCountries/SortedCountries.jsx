@@ -2,7 +2,7 @@
 // Contains: Search component + pagination component + list of links, each containing a thumbnail and leading to country page
 
 import { useState, useEffect } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 // Components
 import Loading from "../../components/Loader/Loader";
@@ -12,21 +12,18 @@ import ThumbnailComponent from "../../components/Thumbnail/ThumbnailComponent";
 
 const SortedCountries = ({
   url,
+  pageTitle,
+  setPageTitle,
   option,
   setOption,
   continents,
   currencies,
   languages,
 }) => {
-  // console.log("sorted page, continents: ", continents);
-  // console.log("sorted page, currencies: ", currencies);
-  // console.log("sorted page, languages: ", languages);
-
+  // const navigate = useNavigate();
   // STATES
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  // Page title
-  const [pageTitle, setPageTitle] = useState("Alphabetical order");
   // Total number of pages
   const [maxPage, setMaxPage] = useState(1);
   // Query params
@@ -52,7 +49,6 @@ const SortedCountries = ({
           const { data } = await axios.get(
             `${url}/countries/sort?name=${name}&page=${page}`
           );
-          // console.log("sorted, data (name sort) >> ", data);
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
         }
@@ -60,7 +56,6 @@ const SortedCountries = ({
           const { data } = await axios.get(
             `${url}/countries/sort?pop=${pop}&page=${page}`
           );
-          // console.log("sorted, data (population sort) >> ", data);
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
         }
@@ -68,7 +63,6 @@ const SortedCountries = ({
           const { data } = await axios.get(
             `${url}/countries/sort?area=${area}&page=${page}`
           );
-          // console.log("sorted, data (area sort) >> ", data);
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
         }
@@ -76,7 +70,6 @@ const SortedCountries = ({
           const { data } = await axios.get(
             `${url}/countries/search?namesearch=${nameSearch}`
           );
-          // console.log("Sorted page, data (name search): ", data.data);
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
         }
@@ -84,7 +77,6 @@ const SortedCountries = ({
           const { data } = await axios.get(
             `${url}/countries/search?cont=${continent}`
           );
-          // console.log("Sorted page, data (continent search): ", data.data);
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
         }
@@ -92,7 +84,6 @@ const SortedCountries = ({
           const { data } = await axios.get(
             `${url}/countries/search?lang=${language}`
           );
-          // console.log("Sorted page, data (language search): ", data.data);
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
         }
@@ -100,7 +91,6 @@ const SortedCountries = ({
           const { data } = await axios.get(
             `${url}/countries/search?curr=${currency}`
           );
-          // console.log("Sorted page, data (currency search)", data.data);
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
         }
