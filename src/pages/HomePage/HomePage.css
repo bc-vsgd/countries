@@ -1,0 +1,54 @@
+/* Home page: Search button */
+
+.sorted-page .search-button-div {
+  border-bottom: 1px solid grey;
+  margin: 20px;
+  padding: 20px 0 30px 0;
+}
+.sorted-page .search-button {
+  margin: 0 auto;
+  height: 100px;
+  width: 200px;
+  background-color: white;
+  border: none;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.sorted-page .search-button:hover {
+  background-color: black;
+  color: white;
+}
+@media (max-width: 992px) {
+  .sorted-page .search-button-div {
+    margin: 10px;
+    padding: 10px 0 20px 0;
+  }
+  .sorted-page .search-button {
+    font-size: 22px;
+    height: 80px;
+    width: 160px;
+  }
+}
+@media (max-width: 768px) {
+  .sorted-page .search-button-div {
+    padding: 0 0 10px 0;
+  }
+  .sorted-page .search-button {
+    font-size: 20px;
+    height: 70px;
+    width: 140px;
+  }
+}
+@media (max-width: 576px) {
+  .sorted-page .search-button-div {
+    margin: 0 0 5px 0;
+    padding: 0 0 10px 0;
+  }
+  .sorted-page .search-button {
+    font-size: 18px;
+    height: 60px;
+    width: 120px;
+  }
+}

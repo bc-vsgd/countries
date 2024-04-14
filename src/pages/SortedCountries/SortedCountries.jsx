@@ -2,7 +2,7 @@
 // Contains: Search component + pagination component + list of links, each containing a thumbnail and leading to country page
 
 import { useState, useEffect } from "react";
-import { useSearchParams, Link, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 // Components
 import Loading from "../../components/Loader/Loader";
@@ -10,22 +10,26 @@ import SearchComponent from "../../components/SearchComponent/SearchComponent";
 import PaginationComponent from "../../components/PaginationComponent/PaginationComponent";
 import ThumbnailComponent from "../../components/Thumbnail/ThumbnailComponent";
 
+// const SortedCountries = ({ url }) => {
 const SortedCountries = ({
   url,
-  pageTitle,
-  setPageTitle,
-  option,
-  setOption,
+  isoCodes,
   continents,
-  currencies,
   languages,
+  currencies,
 }) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
   // STATES
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   // Total number of pages
   const [maxPage, setMaxPage] = useState(1);
+  // Page title
+  const [pageTitle, setPageTitle] = useState("");
+
+  // Sort option
+  const [option, setOption] = useState("name-asc");
   // Query params
   const [searchParams, setSearchParams] = useSearchParams();
   // Params: Sort: name, population, area
@@ -44,58 +48,83 @@ const SortedCountries = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        if (name) {
+      if (name) {
+        try {
           const { data } = await axios.get(
             `${url}/countries/sort?name=${name}&page=${page}`
           );
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
+        } catch (error) {
+          navigate(`/countries/sort?name=${name}&page=${page}`);
         }
-        if (pop) {
+      }
+      if (pop) {
+        try {
           const { data } = await axios.get(
             `${url}/countries/sort?pop=${pop}&page=${page}`
           );
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
+        } catch (error) {
+          navigate(`/countries/sort?pop=${pop}&page=${page}`);
         }
-        if (area) {
+      }
+      if (area) {
+        try {
           const { data } = await axios.get(
             `${url}/countries/sort?area=${area}&page=${page}`
           );
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
+        } catch (error) {
+          navigate(`/countries/sort?area=${area}&page=${page}`);
         }
-        if (nameSearch) {
+      }
+
+      if (nameSearch) {
+        try {
           const { data } = await axios.get(
             `${url}/countries/search?namesearch=${nameSearch}`
           );
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
+        } catch (error) {
+          navigate(`/countries/search?namesearch=${nameSearch}`);
         }
-        if (continent) {
+      }
+      if (continent) {
+        try {
           const { data } = await axios.get(
             `${url}/countries/search?cont=${continent}`
           );
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
+        } catch (error) {
+          navigate(`/countries/search?cont=${continent}`);
         }
-        if (language) {
+      }
+      if (language) {
+        try {
           const { data } = await axios.get(
             `${url}/countries/search?lang=${language}`
           );
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
+        } catch (error) {
+          navigate(`/countries/search?lang=${language}`);
         }
-        if (currency) {
+      }
+      if (currency) {
+        try {
           const { data } = await axios.get(
             `${url}/countries/search?curr=${currency}`
           );
           setData(data.data);
           setMaxPage(Math.ceil(data.data.length / 20));
+        } catch (error) {
+          navigate(`/countries/search?curr=${currency}`);
         }
-      } catch (error) {
-        console.log("sorted page, error >>> ", error);
       }
       setIsLoading(false);
     };
@@ -119,15 +148,17 @@ const SortedCountries = ({
         setArea={setArea}
         // Name, continent, language, currency search
         setNameSearch={setNameSearch}
-        // Regions & subregions array, selected continent
-        continents={continents}
+        // selected continent
         setContinent={setContinent}
-        // Languages array, selected language
-        languages={languages}
+        // selected language
         setLanguage={setLanguage}
-        // Currencies array, selected currency
-        currencies={currencies}
+        // selected currency
         setCurrency={setCurrency}
+        //
+        isoCodes={isoCodes}
+        continents={continents}
+        languages={languages}
+        currencies={currencies}
       />
 
       <PaginationComponent
@@ -151,11 +182,14 @@ const SortedCountries = ({
           return (
             // Name, pop or area sort
             name || pop || area ? (
-              <Link
-                to={`/country/${country.name.official}`}
+              <div
                 key={index}
-                state={{
-                  from: `/countries/sort?name=${name}&pop=${pop}&area=${area}&page=${page}`,
+                onClick={() => {
+                  navigate(`/country/${country.name.official}`, {
+                    state: {
+                      from: `/countries/sort?name=${name}&pop=${pop}&area=${area}&page=${page}`,
+                    },
+                  });
                 }}
               >
                 <ThumbnailComponent
@@ -170,14 +204,17 @@ const SortedCountries = ({
                   language={language}
                   currency={currency}
                 />
-              </Link>
+              </div>
             ) : // Name search
             nameSearch ? (
-              <Link
-                to={`/country/${country.name.official}`}
+              <div
                 key={index}
-                state={{
-                  from: `/countries/search?namesearch=${nameSearch}&page=${page}`,
+                onClick={() => {
+                  navigate(`/country/${country.name.official}`, {
+                    state: {
+                      from: `/countries/search?namesearch=${nameSearch}&page=${page}`,
+                    },
+                  });
                 }}
               >
                 <ThumbnailComponent
@@ -192,14 +229,17 @@ const SortedCountries = ({
                   language={language}
                   currency={currency}
                 />
-              </Link>
+              </div>
             ) : // Continent search
             continent ? (
-              <Link
-                to={`/country/${country.name.official}`}
+              <div
                 key={index}
-                state={{
-                  from: `/countries/search?cont=${continent}&page=${page}`,
+                onClick={() => {
+                  navigate(`/country/${country.name.official}`, {
+                    state: {
+                      from: `/countries/search?cont=${continent}&page=${page}`,
+                    },
+                  });
                 }}
               >
                 <ThumbnailComponent
@@ -214,14 +254,17 @@ const SortedCountries = ({
                   language={language}
                   currency={currency}
                 />
-              </Link>
+              </div>
             ) : // Language search
             language ? (
-              <Link
-                to={`/country/${country.name.official}`}
+              <div
                 key={index}
-                state={{
-                  from: `/countries/search?lang=${language}&page=${page}`,
+                onClick={() => {
+                  navigate(`/country/${country.name.official}`, {
+                    state: {
+                      from: `/countries/search?lang=${language}&page=${page}`,
+                    },
+                  });
                 }}
               >
                 <ThumbnailComponent
@@ -236,15 +279,18 @@ const SortedCountries = ({
                   language={language}
                   currency={currency}
                 />
-              </Link>
+              </div>
             ) : (
               // Currency search
               currency && (
-                <Link
-                  to={`/country/${country.name.official}`}
+                <div
                   key={index}
-                  state={{
-                    from: `/countries/search?curr=${currency}&page=${page}`,
+                  onClick={() => {
+                    navigate(`/country/${country.name.official}`, {
+                      state: {
+                        from: `/countries/search?curr=${currency}&page=${page}`,
+                      },
+                    });
                   }}
                 >
                   <ThumbnailComponent
@@ -259,7 +305,7 @@ const SortedCountries = ({
                     language={language}
                     currency={currency}
                   />
-                </Link>
+                </div>
               )
             )
           );

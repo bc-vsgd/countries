@@ -4,6 +4,7 @@
 @import "./components/Header/Header.css";
 @import "./components/Loader/Loader.css";
 @import "./components/SearchComponent/SearchComponent.css";
+@import "./pages/HomePage/HomePage.css";
 @import "./pages/SortedCountries/SortedCountries.css";
 @import "./components/PaginationComponent/PaginationComponent.css";
 @import "./components/Thumbnail/ThumbnailComponent.css";

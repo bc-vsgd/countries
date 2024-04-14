@@ -37,29 +37,25 @@ library.add(
 const countriesUrl = "https://site--home--r6xgg7xm7vcz.code.run";
 
 function App() {
+  // States
   const [isoCodes, setIsoCodes] = useState([]);
-  // Sort option
-  const [pageTitle, setPageTitle] = useState("");
-  const [option, setOption] = useState("name-asc");
   const [continents, setContinents] = useState([]);
   const [currencies, setCurrencies] = useState([]);
   const [languages, setLanguages] = useState([]);
-
   return (
     <Router>
       <Header />
       <Routes>
-        {/* Home --> Sorted countries page */}
+        {/* Home */}
         <Route
           path="/"
           element={
             <HomePage
               url={countriesUrl}
-              setPageTitle={setPageTitle}
               setIsoCodes={setIsoCodes}
               setContinents={setContinents}
-              setCurrencies={setCurrencies}
               setLanguages={setLanguages}
+              setCurrencies={setCurrencies}
             />
           }
         />
@@ -69,13 +65,10 @@ function App() {
           element={
             <SortedCountries
               url={countriesUrl}
-              pageTitle={pageTitle}
-              setPageTitle={setPageTitle}
-              option={option}
-              setOption={setOption}
+              isoCodes={isoCodes}
               continents={continents}
-              currencies={currencies}
               languages={languages}
+              currencies={currencies}
             />
           }
         />
@@ -84,20 +77,25 @@ function App() {
           element={
             <SortedCountries
               url={countriesUrl}
-              pageTitle={pageTitle}
-              setPageTitle={setPageTitle}
-              option={option}
-              setOption={setOption}
+              isoCodes={isoCodes}
               continents={continents}
-              currencies={currencies}
               languages={languages}
+              currencies={currencies}
             />
           }
         />
         {/* One country page */}
         <Route
           path="/country/:name"
-          element={<CountryPage url={countriesUrl} isoCodes={isoCodes} />}
+          element={
+            <CountryPage
+              url={countriesUrl}
+              isoCodes={isoCodes}
+              continents={continents}
+              languages={languages}
+              currencies={currencies}
+            />
+          }
         />
       </Routes>
       <Footer />

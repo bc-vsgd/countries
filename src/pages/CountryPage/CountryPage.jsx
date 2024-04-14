@@ -70,12 +70,15 @@ const bordersArray = (borders, isoCodes) => {
 
 // COMPONENT
 
-const CountryPage = ({ url, isoCodes }) => {
+// const CountryPage = ({ url }) => {
+const CountryPage = ({ url, isoCodes, continents, currencies }) => {
   const { name } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
+  // const { isoCodes } = location.state;
   const [data, setData] = useState(null);
-  const [languages, setLanguages] = useState([]);
+  // Country languages
+  const [langs, setLangs] = useState([]);
   const [population, setPopulation] = useState("");
   const [area, setArea] = useState("");
   const [borders, setBorders] = useState([]);
@@ -85,7 +88,6 @@ const CountryPage = ({ url, isoCodes }) => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(`${url}/country/${name}`);
-        // console.log("country comp, data: ", data.data[0]);
         setData(data.data[0]);
         // Languages & native names
         if (data.data[0].languages) {
@@ -93,7 +95,7 @@ const CountryPage = ({ url, isoCodes }) => {
             data.data[0].languages,
             data.data[0].name.nativeName
           );
-          setLanguages(languages);
+          setLangs(languages);
         }
         // Population
         if (data.data[0].population) {
@@ -153,14 +155,12 @@ const CountryPage = ({ url, isoCodes }) => {
         {data.name.nativeName && (
           <div className="info-div flex-row">
             <div>
-              {languages.length === 1 ? (
-                <p>Native name</p>
-              ) : (
-                <p>Native names</p>
-              )}
+              {/* {languages.length === 1 ? ( */}
+              {langs.length === 1 ? <p>Native name</p> : <p>Native names</p>}
             </div>
             <div className="flex-col">
-              {languages.map((language, index) => {
+              {/* {languages.map((language, index) => { */}
+              {langs.map((language, index) => {
                 return (
                   <div key={index} className="flex-row">
                     <p className="native-name-lang">{language[1]} :</p>

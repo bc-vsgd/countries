@@ -1,7 +1,7 @@
 // SEARCH COMPONENT: sort select (name, population, area) + search by name form + 3 selects (continent, language, currency search)
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Select from "react-select";
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,15 +18,17 @@ const SearchComponent = ({
   setArea,
   // Search
   setNameSearch,
-  // Regions & subregions array, searched continent
-  continents,
+  // searched continent
   setContinent,
-  // Languages array, searched language
-  languages,
+  // searched language
   setLanguage,
-  // Currencies array, searched currency
-  currencies,
+  // searched currency
   setCurrency,
+  //
+  isoCodes,
+  continents,
+  languages,
+  currencies,
 }) => {
   const navigate = useNavigate();
 
@@ -82,7 +84,6 @@ const SearchComponent = ({
   }
 
   // Language search: array for select
-  // console.log("search comp, languages array: ", languages);
   const selectLanguages = [];
   for (let i = 0; i < languages.length; i++) {
     selectLanguages.push({
